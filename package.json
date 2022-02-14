@@ -31,13 +31,19 @@
   "scripts": {
     "b": "CONTEXT=$(pwd) npm explore begin-build -- npm run",
     "start": "npm run b start:client",
-    "build": "rm -rf docs && npm run b build",
+    "// build": "rm -rf docs && npm run b build",
     "dist:rollup": "NODE_OPTIONS=--max_old_space_size=8192 rollup --config",
     "dist:uglify": "uglifyjs dist/umd.js -c -m -o dist/umd.min.js",
     "dist": "BABEL_ENV=dist rm -rf lib dist && npm run dist:rollup && npm run dist:uglify",
     "test": "BABEL_ENV=test ava src/**/test.js",
     "test:watch": "BABEL_ENV=test npm run test -- -w",
-    "test:tap": "BABEL_ENV=test npm run test -- --tap"
+    "test:tap": "BABEL_ENV=test npm run test -- --tap",
+    "// ========== DEPLOYMENT ==========": "",
+    "build": "webpack --config webpack.config.js --env.stage=${STAGE:=production} --display-error-details",
+    "dev:client": "webpack-dev-server -d --config webpack.config.js --env.stage=development --env.port=${PORT:=8080} --progress",
+    "watcher": "cd $CONTEXT; nodemon --watch yarn.lock --watch properties.js --watch .env",
+    "watch:client": "npm run watcher -- --exec 'nf run npm run b dev:client'",
+    "start:client": "node begin.js; npm run watch:client"
   },
   "peerDependencies": {
     "vue": "^2.2.0",
