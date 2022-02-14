@@ -1,0 +1,1311 @@
+{
+    "mode": "development",
+    "devtool": "eval-source-map",
+    "entry": {
+        "main": "F:\\Workspaces\\Libraries\\vue-babylonjs\\site\\index.js"
+    },
+    "output": {
+        "path": "F:\\Workspaces\\Libraries\\vue-babylonjs\\docs",
+        "publicPath": "/",
+        "filename": "[id].js"
+    },
+    "plugins": [
+        {
+            "definitions": {
+                "process.env": {
+                    "NODE_ENV": "\"development\"",
+                    "PROPERTIES": "{\"cdn\":\"/\",\"api\":\"http://localhost:1/v1/\",\"root\":\"http://localhost:${PORT:=8080}/\",\"stage\":\"development\",\"name\":\"vue-babylonjs\",\"version\":\"1.0.0-beta.7\",\"description\":\"A ready-to-go 3d environment for Vue.js using Babylon.js\"}"
+                }
+            }
+        },
+        {
+            "options": {
+                "resourceRegExp": {},
+                "contextRegExp": {}
+            }
+        },
+        {
+            "options": {},
+            "fullBuildTimeout": 200,
+            "requestTimeout": 10000
+        },
+        {
+            "options": {
+                "template": "index.pug",
+                "filename": "index.html",
+                "hash": false,
+                "inject": true,
+                "compile": true,
+                "favicon": false,
+                "minify": false,
+                "cache": true,
+                "showErrors": true,
+                "chunks": [
+                    "main"
+                ],
+                "excludeChunks": [],
+                "chunksSortMode": "auto",
+                "meta": {},
+                "title": "Webpack App",
+                "xhtml": false
+            }
+        },
+        {}
+    ],
+    "resolve": {
+        "modules": [
+            "F:\\Workspaces\\Libraries\\vue-babylonjs\\node_modules",
+            "F:\\Workspaces\\Libraries\\vue-babylonjs\\node_modules"
+        ],
+        "alias": {
+            "^@": "F:\\Workspaces\\Libraries\\vue-babylonjs",
+            "vue-babylonjs$": "F:\\Workspaces\\Libraries\\vue-babylonjs\\src\\index.js",
+            "vue$": "vue/dist/vue.runtime.common.js",
+            "vue-router$": "vue-router/dist/vue-router.common.js",
+            "vuex$": "vuex/dist/vuex.common.js"
+        }
+    },
+    "resolveLoader": {
+        "modules": [
+            "node_modules",
+            "F:\\Workspaces\\Libraries\\vue-babylonjs\\node_modules"
+        ]
+    },
+    "performance": false,
+    "devServer": {
+        "hot": true,
+        "overlay": true,
+        "historyApiFallback": true,
+        "stats": "minimal"
+    },
+    "module": {
+        "rules": [
+            {
+                "test": {},
+                "exclude": {},
+                "loader": "babel-loader",
+                "options": {
+                    "sourceType": "unambiguous",
+                    "presets": [
+                        [
+                            "@babel/preset-env",
+                            {
+                                "targets": "last 2 versions"
+                            }
+                        ]
+                    ],
+                    "plugins": [
+                        "@babel/plugin-transform-runtime"
+                    ]
+                }
+            },
+            {
+                "test": {},
+                "oneOf": [
+                    {
+                        "test": {},
+                        "use": [
+                            {
+                                "loader": "vue-style-loader",
+                                "options": {
+                                    "sourceMap": true
+                                }
+                            },
+                            {
+                                "loader": "css-loader",
+                                "options": {
+                                    "sourceMap": true
+                                }
+                            },
+                            {
+                                "loader": "postcss-loader",
+                                "options": {
+                                    "sourceMap": true,
+                                    "ident": "postcss",
+                                    "plugins": [
+                                        null
+                                    ]
+                                }
+                            },
+                            {
+                                "loader": "sass-loader",
+                                "options": {
+                                    "indentedSyntax": true,
+                                    "sourceMap": true
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "use": [
+                            {
+                                "loader": "vue-style-loader",
+                                "options": {
+                                    "sourceMap": true
+                                }
+                            },
+                            {
+                                "loader": "css-loader",
+                                "options": {
+                                    "sourceMap": true
+                                }
+                            },
+                            {
+                                "loader": "postcss-loader",
+                                "options": {
+                                    "sourceMap": true,
+                                    "ident": "postcss",
+                                    "plugins": [
+                                        null
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "test": {},
+                "oneOf": [
+                    {
+                        "resourceQuery": {},
+                        "loader": {
+                            "loader": "pug-plain-loader",
+                            "options": {
+                                "ident": "pug-loader",
+                                "data": {
+                                    "config": {
+                                        "mode": "development",
+                                        "devtool": "eval-source-map",
+                                        "entry": {
+                                            "main": "F:\\Workspaces\\Libraries\\vue-babylonjs\\site\\index.js"
+                                        },
+                                        "output": {
+                                            "path": "F:\\Workspaces\\Libraries\\vue-babylonjs\\docs",
+                                            "publicPath": "/",
+                                            "filename": "[id].js"
+                                        },
+                                        "plugins": [
+                                            {
+                                                "definitions": {
+                                                    "process.env": {
+                                                        "NODE_ENV": "\"development\"",
+                                                        "PROPERTIES": "{\"cdn\":\"/\",\"api\":\"http://localhost:1/v1/\",\"root\":\"http://localhost:${PORT:=8080}/\",\"stage\":\"development\",\"name\":\"vue-babylonjs\",\"version\":\"1.0.0-beta.7\",\"description\":\"A ready-to-go 3d environment for Vue.js using Babylon.js\"}"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "options": {
+                                                    "resourceRegExp": {},
+                                                    "contextRegExp": {}
+                                                }
+                                            },
+                                            {
+                                                "options": {},
+                                                "fullBuildTimeout": 200,
+                                                "requestTimeout": 10000
+                                            },
+                                            {
+                                                "options": {
+                                                    "template": "index.pug",
+                                                    "filename": "index.html",
+                                                    "hash": false,
+                                                    "inject": true,
+                                                    "compile": true,
+                                                    "favicon": false,
+                                                    "minify": false,
+                                                    "cache": true,
+                                                    "showErrors": true,
+                                                    "chunks": [
+                                                        "main"
+                                                    ],
+                                                    "excludeChunks": [],
+                                                    "chunksSortMode": "auto",
+                                                    "meta": {},
+                                                    "title": "Webpack App",
+                                                    "xhtml": false
+                                                }
+                                            }
+                                        ],
+                                        "resolve": {
+                                            "modules": [
+                                                "F:\\Workspaces\\Libraries\\vue-babylonjs\\node_modules",
+                                                "F:\\Workspaces\\Libraries\\vue-babylonjs\\node_modules"
+                                            ],
+                                            "alias": {
+                                                "^@": "F:\\Workspaces\\Libraries\\vue-babylonjs"
+                                            }
+                                        },
+                                        "resolveLoader": {
+                                            "modules": [
+                                                "node_modules",
+                                                "F:\\Workspaces\\Libraries\\vue-babylonjs\\node_modules"
+                                            ]
+                                        },
+                                        "performance": false,
+                                        "devServer": {
+                                            "hot": true,
+                                            "overlay": true,
+                                            "historyApiFallback": true,
+                                            "stats": "minimal"
+                                        },
+                                        "module": {
+                                            "rules": [
+                                                {
+                                                    "test": {},
+                                                    "exclude": {},
+                                                    "loader": "babel-loader",
+                                                    "options": {
+                                                        "sourceType": "unambiguous",
+                                                        "presets": [
+                                                            [
+                                                                "@babel/preset-env",
+                                                                {
+                                                                    "targets": "last 2 versions"
+                                                                }
+                                                            ]
+                                                        ],
+                                                        "plugins": [
+                                                            "@babel/plugin-transform-runtime"
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "test": {},
+                                                    "oneOf": [
+                                                        {
+                                                            "test": {},
+                                                            "use": [
+                                                                {
+                                                                    "loader": "style-loader",
+                                                                    "options": {
+                                                                        "sourceMap": true
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "loader": "css-loader",
+                                                                    "options": {
+                                                                        "sourceMap": true
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "loader": "postcss-loader",
+                                                                    "options": {
+                                                                        "sourceMap": true,
+                                                                        "ident": "postcss",
+                                                                        "plugins": [
+                                                                            null
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "loader": "sass-loader",
+                                                                    "options": {
+                                                                        "indentedSyntax": true,
+                                                                        "sourceMap": true
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "use": [
+                                                                {
+                                                                    "loader": "style-loader",
+                                                                    "options": {
+                                                                        "sourceMap": true
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "loader": "css-loader",
+                                                                    "options": {
+                                                                        "sourceMap": true
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "loader": "postcss-loader",
+                                                                    "options": {
+                                                                        "sourceMap": true,
+                                                                        "ident": "postcss",
+                                                                        "plugins": [
+                                                                            null
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "optimization": {
+                                            "splitChunks": {
+                                                "cacheGroups": {
+                                                    "styles": {
+                                                        "name": "styles",
+                                                        "test": {},
+                                                        "chunks": "all",
+                                                        "enforce": true
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "development": true,
+                                    "options": {
+                                        "stage": "development",
+                                        "port": "${PORT:=8080}"
+                                    },
+                                    "argv": {
+                                        "_": [],
+                                        "cache": null,
+                                        "bail": null,
+                                        "profile": null,
+                                        "color": {
+                                            "level": 3,
+                                            "hasBasic": true,
+                                            "has256": true,
+                                            "has16m": true
+                                        },
+                                        "colors": {
+                                            "level": 3,
+                                            "hasBasic": true,
+                                            "has256": true,
+                                            "has16m": true
+                                        },
+                                        "liveReload": true,
+                                        "live-reload": true,
+                                        "serveIndex": true,
+                                        "serve-index": true,
+                                        "inline": true,
+                                        "info": true,
+                                        "d": true,
+                                        "config": "webpack.config.js",
+                                        "env": {
+                                            "stage": "development",
+                                            "port": "${PORT:=8080}"
+                                        },
+                                        "progress": true,
+                                        "info-verbosity": "info",
+                                        "infoVerbosity": "info",
+                                        "client-log-level": "info",
+                                        "clientLogLevel": "info",
+                                        "host": "localhost",
+                                        "$0": "node_modules\\webpack-dev-server\\bin\\webpack-dev-server.js",
+                                        "debug": true,
+                                        "output-pathinfo": true,
+                                        "devtool": "eval-cheap-module-source-map",
+                                        "mode": "development"
+                                    },
+                                    "package": {
+                                        "name": "vue-babylonjs",
+                                        "version": "1.0.0-beta.7",
+                                        "files": [
+                                            "dist/*",
+                                            "lib/*"
+                                        ],
+                                        "main": "dist/umd.js",
+                                        "module": "dist/esm.js",
+                                        "unpkg": "dist/umd.min.js",
+                                        "jsdelivr": "dist/umd.min.js",
+                                        "engines": {
+                                            "node": ">=8.9"
+                                        },
+                                        "description": "A ready-to-go 3d environment for Vue.js using Babylon.js",
+                                        "homepage": "https://github.com/Beg-in/vue-babylonjs",
+                                        "repository": "Beg-in/vue-babylonjs",
+                                        "bugs": {
+                                            "url": "https://github.com/Beg-in/vue-babylonjs/issues"
+                                        },
+                                        "author": {
+                                            "name": "Beg.in",
+                                            "email": "info@beg.in",
+                                            "url": "http://beg.in"
+                                        },
+                                        "contributors": [
+                                            "Brian Jesse <brian.jesse@gmail.com> (brianjesse.com)",
+                                            "Johnmark Beaty <johnmarkbeaty@gmail.com> (johnmarkbeaty.com)"
+                                        ],
+                                        "license": "MIT",
+                                        "scripts": {
+                                            "b": "CONTEXT=$(pwd) npm explore begin-build -- npm run",
+                                            "start": "npm run b start:client",
+                                            "// build": "rm -rf docs && npm run b build",
+                                            "dist:rollup": "NODE_OPTIONS=--max_old_space_size=8192 rollup --config",
+                                            "dist:uglify": "uglifyjs dist/umd.js -c -m -o dist/umd.min.js",
+                                            "dist": "BABEL_ENV=dist rm -rf lib dist && npm run dist:rollup && npm run dist:uglify",
+                                            "test": "BABEL_ENV=test ava src/**/test.js",
+                                            "test:watch": "BABEL_ENV=test npm run test -- -w",
+                                            "test:tap": "BABEL_ENV=test npm run test -- --tap",
+                                            "// ========== DEPLOYMENT ==========": "",
+                                            "build": "webpack --config webpack.config.js --env.stage=${STAGE:=production} --display-error-details",
+                                            "dev:client": "webpack-dev-server -d --config webpack.config.js --env.stage=development --env.port=${PORT:=8080} --progress",
+                                            "watcher": "cd $CONTEXT; nodemon --watch yarn.lock --watch properties.js --watch .env",
+                                            "watch:client": "npm run watcher -- --exec 'nf run npm run b dev:client'",
+                                            "start:client": "node begin.js; npm run watch:client"
+                                        },
+                                        "peerDependencies": {
+                                            "vue": "^2.2.0",
+                                            "@babylonjs/core": "^4.0.3",
+                                            "@babylonjs/loaders": "^4.0.3"
+                                        },
+                                        "devDependencies": {
+                                            "@babel/core": "^7.4.5",
+                                            "@babel/plugin-external-helpers": "^7.0.0",
+                                            "@babel/plugin-transform-runtime": "^7.4.4",
+                                            "@babel/preset-env": "^7.4.5",
+                                            "@babel/register": "^7.4.4",
+                                            "@babel/runtime": "^7.4.5",
+                                            "@babylonjs/core": "^4.0.3",
+                                            "@babylonjs/inspector": "^4.0.3",
+                                            "@babylonjs/loaders": "^4.0.3",
+                                            "@vue/test-utils": "^1.0.0-beta.25",
+                                            "ava": "^2.0.0",
+                                            "begin-build": "^0.16.15",
+                                            "begin-project": "^0.4.3",
+                                            "cannon": "^0.6.2",
+                                            "earcut": "^2.1.3",
+                                            "eslint-plugin-vue": "^5.0.0-beta.3",
+                                            "find": "^0.2.9",
+                                            "frow": "^3.1.3",
+                                            "glslify-loader": "^2.0.0",
+                                            "jstransformer-markdown-it": "^2.1.0",
+                                            "jstransformer-pug": "^0.3.0",
+                                            "markdown-it-prism": "^2.0.2",
+                                            "oimo": "^1.0.9",
+                                            "prismjs": "^1.16.0",
+                                            "raw-loader": "^1.0.0",
+                                            "rollup": "^1.13.1",
+                                            "rollup-plugin-babel": "^4.0.3",
+                                            "rollup-plugin-cleanup": "^3.0.0",
+                                            "rollup-plugin-commonjs": "^10.0.0",
+                                            "rollup-plugin-node-resolve": "^5.0.1",
+                                            "uglify-js": "^3.6.0"
+                                        },
+                                        "ava": {
+                                            "require": [
+                                                "@babel/register"
+                                            ]
+                                        }
+                                    },
+                                    "mode": "development",
+                                    "stage": "development",
+                                    "context": "F:\\Workspaces\\Libraries\\vue-babylonjs",
+                                    "url": "http://localhost",
+                                    "port": "${PORT:=8080}",
+                                    "dir": "F:\\Workspaces\\Libraries\\vue-babylonjs",
+                                    "properties": {
+                                        "cdn": "/",
+                                        "api": "http://localhost:1/v1/",
+                                        "root": "http://localhost:${PORT:=8080}/",
+                                        "domain": "beg-in.github.io",
+                                        "dist": "docs",
+                                        "browsers": "last 2 versions",
+                                        "stage": "development",
+                                        "name": "vue-babylonjs",
+                                        "version": "1.0.0-beta.7",
+                                        "description": "A ready-to-go 3d environment for Vue.js using Babylon.js",
+                                        "main": "./site/index.js",
+                                        "title": "Vue-BabylonJS Documentation site",
+                                        "color": "#42b883",
+                                        "public": {
+                                            "cdn": "/",
+                                            "api": "http://localhost:1/v1/",
+                                            "root": "http://localhost:${PORT:=8080}/",
+                                            "stage": "development",
+                                            "name": "vue-babylonjs",
+                                            "version": "1.0.0-beta.7",
+                                            "description": "A ready-to-go 3d environment for Vue.js using Babylon.js"
+                                        }
+                                    },
+                                    "main": "F:\\Workspaces\\Libraries\\vue-babylonjs\\site\\index.js",
+                                    "base": ""
+                                },
+                                "plugins": [
+                                    {}
+                                ],
+                                "filters": {}
+                            }
+                        }
+                    },
+                    {
+                        "test": {},
+                        "use": [
+                            "vue-loader",
+                            {
+                                "loader": "pug-plain-loader",
+                                "options": {
+                                    "ident": "pug-loader",
+                                    "data": {
+                                        "config": {
+                                            "mode": "development",
+                                            "devtool": "eval-source-map",
+                                            "entry": {
+                                                "main": "F:\\Workspaces\\Libraries\\vue-babylonjs\\site\\index.js"
+                                            },
+                                            "output": {
+                                                "path": "F:\\Workspaces\\Libraries\\vue-babylonjs\\docs",
+                                                "publicPath": "/",
+                                                "filename": "[id].js"
+                                            },
+                                            "plugins": [
+                                                {
+                                                    "definitions": {
+                                                        "process.env": {
+                                                            "NODE_ENV": "\"development\"",
+                                                            "PROPERTIES": "{\"cdn\":\"/\",\"api\":\"http://localhost:1/v1/\",\"root\":\"http://localhost:${PORT:=8080}/\",\"stage\":\"development\",\"name\":\"vue-babylonjs\",\"version\":\"1.0.0-beta.7\",\"description\":\"A ready-to-go 3d environment for Vue.js using Babylon.js\"}"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "options": {
+                                                        "resourceRegExp": {},
+                                                        "contextRegExp": {}
+                                                    }
+                                                },
+                                                {
+                                                    "options": {},
+                                                    "fullBuildTimeout": 200,
+                                                    "requestTimeout": 10000
+                                                },
+                                                {
+                                                    "options": {
+                                                        "template": "index.pug",
+                                                        "filename": "index.html",
+                                                        "hash": false,
+                                                        "inject": true,
+                                                        "compile": true,
+                                                        "favicon": false,
+                                                        "minify": false,
+                                                        "cache": true,
+                                                        "showErrors": true,
+                                                        "chunks": [
+                                                            "main"
+                                                        ],
+                                                        "excludeChunks": [],
+                                                        "chunksSortMode": "auto",
+                                                        "meta": {},
+                                                        "title": "Webpack App",
+                                                        "xhtml": false
+                                                    }
+                                                }
+                                            ],
+                                            "resolve": {
+                                                "modules": [
+                                                    "F:\\Workspaces\\Libraries\\vue-babylonjs\\node_modules",
+                                                    "F:\\Workspaces\\Libraries\\vue-babylonjs\\node_modules"
+                                                ],
+                                                "alias": {
+                                                    "^@": "F:\\Workspaces\\Libraries\\vue-babylonjs"
+                                                }
+                                            },
+                                            "resolveLoader": {
+                                                "modules": [
+                                                    "node_modules",
+                                                    "F:\\Workspaces\\Libraries\\vue-babylonjs\\node_modules"
+                                                ]
+                                            },
+                                            "performance": false,
+                                            "devServer": {
+                                                "hot": true,
+                                                "overlay": true,
+                                                "historyApiFallback": true,
+                                                "stats": "minimal"
+                                            },
+                                            "module": {
+                                                "rules": [
+                                                    {
+                                                        "test": {},
+                                                        "exclude": {},
+                                                        "loader": "babel-loader",
+                                                        "options": {
+                                                            "sourceType": "unambiguous",
+                                                            "presets": [
+                                                                [
+                                                                    "@babel/preset-env",
+                                                                    {
+                                                                        "targets": "last 2 versions"
+                                                                    }
+                                                                ]
+                                                            ],
+                                                            "plugins": [
+                                                                "@babel/plugin-transform-runtime"
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "test": {},
+                                                        "oneOf": [
+                                                            {
+                                                                "test": {},
+                                                                "use": [
+                                                                    {
+                                                                        "loader": "style-loader",
+                                                                        "options": {
+                                                                            "sourceMap": true
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "loader": "css-loader",
+                                                                        "options": {
+                                                                            "sourceMap": true
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "loader": "postcss-loader",
+                                                                        "options": {
+                                                                            "sourceMap": true,
+                                                                            "ident": "postcss",
+                                                                            "plugins": [
+                                                                                null
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "loader": "sass-loader",
+                                                                        "options": {
+                                                                            "indentedSyntax": true,
+                                                                            "sourceMap": true
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "use": [
+                                                                    {
+                                                                        "loader": "style-loader",
+                                                                        "options": {
+                                                                            "sourceMap": true
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "loader": "css-loader",
+                                                                        "options": {
+                                                                            "sourceMap": true
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "loader": "postcss-loader",
+                                                                        "options": {
+                                                                            "sourceMap": true,
+                                                                            "ident": "postcss",
+                                                                            "plugins": [
+                                                                                null
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "optimization": {
+                                                "splitChunks": {
+                                                    "cacheGroups": {
+                                                        "styles": {
+                                                            "name": "styles",
+                                                            "test": {},
+                                                            "chunks": "all",
+                                                            "enforce": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "development": true,
+                                        "options": {
+                                            "stage": "development",
+                                            "port": "${PORT:=8080}"
+                                        },
+                                        "argv": {
+                                            "_": [],
+                                            "cache": null,
+                                            "bail": null,
+                                            "profile": null,
+                                            "color": {
+                                                "level": 3,
+                                                "hasBasic": true,
+                                                "has256": true,
+                                                "has16m": true
+                                            },
+                                            "colors": {
+                                                "level": 3,
+                                                "hasBasic": true,
+                                                "has256": true,
+                                                "has16m": true
+                                            },
+                                            "liveReload": true,
+                                            "live-reload": true,
+                                            "serveIndex": true,
+                                            "serve-index": true,
+                                            "inline": true,
+                                            "info": true,
+                                            "d": true,
+                                            "config": "webpack.config.js",
+                                            "env": {
+                                                "stage": "development",
+                                                "port": "${PORT:=8080}"
+                                            },
+                                            "progress": true,
+                                            "info-verbosity": "info",
+                                            "infoVerbosity": "info",
+                                            "client-log-level": "info",
+                                            "clientLogLevel": "info",
+                                            "host": "localhost",
+                                            "$0": "node_modules\\webpack-dev-server\\bin\\webpack-dev-server.js",
+                                            "debug": true,
+                                            "output-pathinfo": true,
+                                            "devtool": "eval-cheap-module-source-map",
+                                            "mode": "development"
+                                        },
+                                        "package": {
+                                            "name": "vue-babylonjs",
+                                            "version": "1.0.0-beta.7",
+                                            "files": [
+                                                "dist/*",
+                                                "lib/*"
+                                            ],
+                                            "main": "dist/umd.js",
+                                            "module": "dist/esm.js",
+                                            "unpkg": "dist/umd.min.js",
+                                            "jsdelivr": "dist/umd.min.js",
+                                            "engines": {
+                                                "node": ">=8.9"
+                                            },
+                                            "description": "A ready-to-go 3d environment for Vue.js using Babylon.js",
+                                            "homepage": "https://github.com/Beg-in/vue-babylonjs",
+                                            "repository": "Beg-in/vue-babylonjs",
+                                            "bugs": {
+                                                "url": "https://github.com/Beg-in/vue-babylonjs/issues"
+                                            },
+                                            "author": {
+                                                "name": "Beg.in",
+                                                "email": "info@beg.in",
+                                                "url": "http://beg.in"
+                                            },
+                                            "contributors": [
+                                                "Brian Jesse <brian.jesse@gmail.com> (brianjesse.com)",
+                                                "Johnmark Beaty <johnmarkbeaty@gmail.com> (johnmarkbeaty.com)"
+                                            ],
+                                            "license": "MIT",
+                                            "scripts": {
+                                                "b": "CONTEXT=$(pwd) npm explore begin-build -- npm run",
+                                                "start": "npm run b start:client",
+                                                "// build": "rm -rf docs && npm run b build",
+                                                "dist:rollup": "NODE_OPTIONS=--max_old_space_size=8192 rollup --config",
+                                                "dist:uglify": "uglifyjs dist/umd.js -c -m -o dist/umd.min.js",
+                                                "dist": "BABEL_ENV=dist rm -rf lib dist && npm run dist:rollup && npm run dist:uglify",
+                                                "test": "BABEL_ENV=test ava src/**/test.js",
+                                                "test:watch": "BABEL_ENV=test npm run test -- -w",
+                                                "test:tap": "BABEL_ENV=test npm run test -- --tap",
+                                                "// ========== DEPLOYMENT ==========": "",
+                                                "build": "webpack --config webpack.config.js --env.stage=${STAGE:=production} --display-error-details",
+                                                "dev:client": "webpack-dev-server -d --config webpack.config.js --env.stage=development --env.port=${PORT:=8080} --progress",
+                                                "watcher": "cd $CONTEXT; nodemon --watch yarn.lock --watch properties.js --watch .env",
+                                                "watch:client": "npm run watcher -- --exec 'nf run npm run b dev:client'",
+                                                "start:client": "node begin.js; npm run watch:client"
+                                            },
+                                            "peerDependencies": {
+                                                "vue": "^2.2.0",
+                                                "@babylonjs/core": "^4.0.3",
+                                                "@babylonjs/loaders": "^4.0.3"
+                                            },
+                                            "devDependencies": {
+                                                "@babel/core": "^7.4.5",
+                                                "@babel/plugin-external-helpers": "^7.0.0",
+                                                "@babel/plugin-transform-runtime": "^7.4.4",
+                                                "@babel/preset-env": "^7.4.5",
+                                                "@babel/register": "^7.4.4",
+                                                "@babel/runtime": "^7.4.5",
+                                                "@babylonjs/core": "^4.0.3",
+                                                "@babylonjs/inspector": "^4.0.3",
+                                                "@babylonjs/loaders": "^4.0.3",
+                                                "@vue/test-utils": "^1.0.0-beta.25",
+                                                "ava": "^2.0.0",
+                                                "begin-build": "^0.16.15",
+                                                "begin-project": "^0.4.3",
+                                                "cannon": "^0.6.2",
+                                                "earcut": "^2.1.3",
+                                                "eslint-plugin-vue": "^5.0.0-beta.3",
+                                                "find": "^0.2.9",
+                                                "frow": "^3.1.3",
+                                                "glslify-loader": "^2.0.0",
+                                                "jstransformer-markdown-it": "^2.1.0",
+                                                "jstransformer-pug": "^0.3.0",
+                                                "markdown-it-prism": "^2.0.2",
+                                                "oimo": "^1.0.9",
+                                                "prismjs": "^1.16.0",
+                                                "raw-loader": "^1.0.0",
+                                                "rollup": "^1.13.1",
+                                                "rollup-plugin-babel": "^4.0.3",
+                                                "rollup-plugin-cleanup": "^3.0.0",
+                                                "rollup-plugin-commonjs": "^10.0.0",
+                                                "rollup-plugin-node-resolve": "^5.0.1",
+                                                "uglify-js": "^3.6.0"
+                                            },
+                                            "ava": {
+                                                "require": [
+                                                    "@babel/register"
+                                                ]
+                                            }
+                                        },
+                                        "mode": "development",
+                                        "stage": "development",
+                                        "context": "F:\\Workspaces\\Libraries\\vue-babylonjs",
+                                        "url": "http://localhost",
+                                        "port": "${PORT:=8080}",
+                                        "dir": "F:\\Workspaces\\Libraries\\vue-babylonjs",
+                                        "properties": {
+                                            "cdn": "/",
+                                            "api": "http://localhost:1/v1/",
+                                            "root": "http://localhost:${PORT:=8080}/",
+                                            "domain": "beg-in.github.io",
+                                            "dist": "docs",
+                                            "browsers": "last 2 versions",
+                                            "stage": "development",
+                                            "name": "vue-babylonjs",
+                                            "version": "1.0.0-beta.7",
+                                            "description": "A ready-to-go 3d environment for Vue.js using Babylon.js",
+                                            "main": "./site/index.js",
+                                            "title": "Vue-BabylonJS Documentation site",
+                                            "color": "#42b883",
+                                            "public": {
+                                                "cdn": "/",
+                                                "api": "http://localhost:1/v1/",
+                                                "root": "http://localhost:${PORT:=8080}/",
+                                                "stage": "development",
+                                                "name": "vue-babylonjs",
+                                                "version": "1.0.0-beta.7",
+                                                "description": "A ready-to-go 3d environment for Vue.js using Babylon.js"
+                                            }
+                                        },
+                                        "main": "F:\\Workspaces\\Libraries\\vue-babylonjs\\site\\index.js",
+                                        "base": ""
+                                    },
+                                    "plugins": [
+                                        {}
+                                    ],
+                                    "filters": {}
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "use": [
+                            {
+                                "loader": "html-loader"
+                            },
+                            {
+                                "loader": "pug-plain-loader",
+                                "options": {
+                                    "ident": "pug-loader",
+                                    "data": {
+                                        "config": {
+                                            "mode": "development",
+                                            "devtool": "eval-source-map",
+                                            "entry": {
+                                                "main": "F:\\Workspaces\\Libraries\\vue-babylonjs\\site\\index.js"
+                                            },
+                                            "output": {
+                                                "path": "F:\\Workspaces\\Libraries\\vue-babylonjs\\docs",
+                                                "publicPath": "/",
+                                                "filename": "[id].js"
+                                            },
+                                            "plugins": [
+                                                {
+                                                    "definitions": {
+                                                        "process.env": {
+                                                            "NODE_ENV": "\"development\"",
+                                                            "PROPERTIES": "{\"cdn\":\"/\",\"api\":\"http://localhost:1/v1/\",\"root\":\"http://localhost:${PORT:=8080}/\",\"stage\":\"development\",\"name\":\"vue-babylonjs\",\"version\":\"1.0.0-beta.7\",\"description\":\"A ready-to-go 3d environment for Vue.js using Babylon.js\"}"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "options": {
+                                                        "resourceRegExp": {},
+                                                        "contextRegExp": {}
+                                                    }
+                                                },
+                                                {
+                                                    "options": {},
+                                                    "fullBuildTimeout": 200,
+                                                    "requestTimeout": 10000
+                                                },
+                                                {
+                                                    "options": {
+                                                        "template": "index.pug",
+                                                        "filename": "index.html",
+                                                        "hash": false,
+                                                        "inject": true,
+                                                        "compile": true,
+                                                        "favicon": false,
+                                                        "minify": false,
+                                                        "cache": true,
+                                                        "showErrors": true,
+                                                        "chunks": [
+                                                            "main"
+                                                        ],
+                                                        "excludeChunks": [],
+                                                        "chunksSortMode": "auto",
+                                                        "meta": {},
+                                                        "title": "Webpack App",
+                                                        "xhtml": false
+                                                    }
+                                                }
+                                            ],
+                                            "resolve": {
+                                                "modules": [
+                                                    "F:\\Workspaces\\Libraries\\vue-babylonjs\\node_modules",
+                                                    "F:\\Workspaces\\Libraries\\vue-babylonjs\\node_modules"
+                                                ],
+                                                "alias": {
+                                                    "^@": "F:\\Workspaces\\Libraries\\vue-babylonjs"
+                                                }
+                                            },
+                                            "resolveLoader": {
+                                                "modules": [
+                                                    "node_modules",
+                                                    "F:\\Workspaces\\Libraries\\vue-babylonjs\\node_modules"
+                                                ]
+                                            },
+                                            "performance": false,
+                                            "devServer": {
+                                                "hot": true,
+                                                "overlay": true,
+                                                "historyApiFallback": true,
+                                                "stats": "minimal"
+                                            },
+                                            "module": {
+                                                "rules": [
+                                                    {
+                                                        "test": {},
+                                                        "exclude": {},
+                                                        "loader": "babel-loader",
+                                                        "options": {
+                                                            "sourceType": "unambiguous",
+                                                            "presets": [
+                                                                [
+                                                                    "@babel/preset-env",
+                                                                    {
+                                                                        "targets": "last 2 versions"
+                                                                    }
+                                                                ]
+                                                            ],
+                                                            "plugins": [
+                                                                "@babel/plugin-transform-runtime"
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "test": {},
+                                                        "oneOf": [
+                                                            {
+                                                                "test": {},
+                                                                "use": [
+                                                                    {
+                                                                        "loader": "style-loader",
+                                                                        "options": {
+                                                                            "sourceMap": true
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "loader": "css-loader",
+                                                                        "options": {
+                                                                            "sourceMap": true
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "loader": "postcss-loader",
+                                                                        "options": {
+                                                                            "sourceMap": true,
+                                                                            "ident": "postcss",
+                                                                            "plugins": [
+                                                                                null
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "loader": "sass-loader",
+                                                                        "options": {
+                                                                            "indentedSyntax": true,
+                                                                            "sourceMap": true
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "use": [
+                                                                    {
+                                                                        "loader": "style-loader",
+                                                                        "options": {
+                                                                            "sourceMap": true
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "loader": "css-loader",
+                                                                        "options": {
+                                                                            "sourceMap": true
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "loader": "postcss-loader",
+                                                                        "options": {
+                                                                            "sourceMap": true,
+                                                                            "ident": "postcss",
+                                                                            "plugins": [
+                                                                                null
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "optimization": {
+                                                "splitChunks": {
+                                                    "cacheGroups": {
+                                                        "styles": {
+                                                            "name": "styles",
+                                                            "test": {},
+                                                            "chunks": "all",
+                                                            "enforce": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "development": true,
+                                        "options": {
+                                            "stage": "development",
+                                            "port": "${PORT:=8080}"
+                                        },
+                                        "argv": {
+                                            "_": [],
+                                            "cache": null,
+                                            "bail": null,
+                                            "profile": null,
+                                            "color": {
+                                                "level": 3,
+                                                "hasBasic": true,
+                                                "has256": true,
+                                                "has16m": true
+                                            },
+                                            "colors": {
+                                                "level": 3,
+                                                "hasBasic": true,
+                                                "has256": true,
+                                                "has16m": true
+                                            },
+                                            "liveReload": true,
+                                            "live-reload": true,
+                                            "serveIndex": true,
+                                            "serve-index": true,
+                                            "inline": true,
+                                            "info": true,
+                                            "d": true,
+                                            "config": "webpack.config.js",
+                                            "env": {
+                                                "stage": "development",
+                                                "port": "${PORT:=8080}"
+                                            },
+                                            "progress": true,
+                                            "info-verbosity": "info",
+                                            "infoVerbosity": "info",
+                                            "client-log-level": "info",
+                                            "clientLogLevel": "info",
+                                            "host": "localhost",
+                                            "$0": "node_modules\\webpack-dev-server\\bin\\webpack-dev-server.js",
+                                            "debug": true,
+                                            "output-pathinfo": true,
+                                            "devtool": "eval-cheap-module-source-map",
+                                            "mode": "development"
+                                        },
+                                        "package": {
+                                            "name": "vue-babylonjs",
+                                            "version": "1.0.0-beta.7",
+                                            "files": [
+                                                "dist/*",
+                                                "lib/*"
+                                            ],
+                                            "main": "dist/umd.js",
+                                            "module": "dist/esm.js",
+                                            "unpkg": "dist/umd.min.js",
+                                            "jsdelivr": "dist/umd.min.js",
+                                            "engines": {
+                                                "node": ">=8.9"
+                                            },
+                                            "description": "A ready-to-go 3d environment for Vue.js using Babylon.js",
+                                            "homepage": "https://github.com/Beg-in/vue-babylonjs",
+                                            "repository": "Beg-in/vue-babylonjs",
+                                            "bugs": {
+                                                "url": "https://github.com/Beg-in/vue-babylonjs/issues"
+                                            },
+                                            "author": {
+                                                "name": "Beg.in",
+                                                "email": "info@beg.in",
+                                                "url": "http://beg.in"
+                                            },
+                                            "contributors": [
+                                                "Brian Jesse <brian.jesse@gmail.com> (brianjesse.com)",
+                                                "Johnmark Beaty <johnmarkbeaty@gmail.com> (johnmarkbeaty.com)"
+                                            ],
+                                            "license": "MIT",
+                                            "scripts": {
+                                                "b": "CONTEXT=$(pwd) npm explore begin-build -- npm run",
+                                                "start": "npm run b start:client",
+                                                "// build": "rm -rf docs && npm run b build",
+                                                "dist:rollup": "NODE_OPTIONS=--max_old_space_size=8192 rollup --config",
+                                                "dist:uglify": "uglifyjs dist/umd.js -c -m -o dist/umd.min.js",
+                                                "dist": "BABEL_ENV=dist rm -rf lib dist && npm run dist:rollup && npm run dist:uglify",
+                                                "test": "BABEL_ENV=test ava src/**/test.js",
+                                                "test:watch": "BABEL_ENV=test npm run test -- -w",
+                                                "test:tap": "BABEL_ENV=test npm run test -- --tap",
+                                                "// ========== DEPLOYMENT ==========": "",
+                                                "build": "webpack --config webpack.config.js --env.stage=${STAGE:=production} --display-error-details",
+                                                "dev:client": "webpack-dev-server -d --config webpack.config.js --env.stage=development --env.port=${PORT:=8080} --progress",
+                                                "watcher": "cd $CONTEXT; nodemon --watch yarn.lock --watch properties.js --watch .env",
+                                                "watch:client": "npm run watcher -- --exec 'nf run npm run b dev:client'",
+                                                "start:client": "node begin.js; npm run watch:client"
+                                            },
+                                            "peerDependencies": {
+                                                "vue": "^2.2.0",
+                                                "@babylonjs/core": "^4.0.3",
+                                                "@babylonjs/loaders": "^4.0.3"
+                                            },
+                                            "devDependencies": {
+                                                "@babel/core": "^7.4.5",
+                                                "@babel/plugin-external-helpers": "^7.0.0",
+                                                "@babel/plugin-transform-runtime": "^7.4.4",
+                                                "@babel/preset-env": "^7.4.5",
+                                                "@babel/register": "^7.4.4",
+                                                "@babel/runtime": "^7.4.5",
+                                                "@babylonjs/core": "^4.0.3",
+                                                "@babylonjs/inspector": "^4.0.3",
+                                                "@babylonjs/loaders": "^4.0.3",
+                                                "@vue/test-utils": "^1.0.0-beta.25",
+                                                "ava": "^2.0.0",
+                                                "begin-build": "^0.16.15",
+                                                "begin-project": "^0.4.3",
+                                                "cannon": "^0.6.2",
+                                                "earcut": "^2.1.3",
+                                                "eslint-plugin-vue": "^5.0.0-beta.3",
+                                                "find": "^0.2.9",
+                                                "frow": "^3.1.3",
+                                                "glslify-loader": "^2.0.0",
+                                                "jstransformer-markdown-it": "^2.1.0",
+                                                "jstransformer-pug": "^0.3.0",
+                                                "markdown-it-prism": "^2.0.2",
+                                                "oimo": "^1.0.9",
+                                                "prismjs": "^1.16.0",
+                                                "raw-loader": "^1.0.0",
+                                                "rollup": "^1.13.1",
+                                                "rollup-plugin-babel": "^4.0.3",
+                                                "rollup-plugin-cleanup": "^3.0.0",
+                                                "rollup-plugin-commonjs": "^10.0.0",
+                                                "rollup-plugin-node-resolve": "^5.0.1",
+                                                "uglify-js": "^3.6.0"
+                                            },
+                                            "ava": {
+                                                "require": [
+                                                    "@babel/register"
+                                                ]
+                                            }
+                                        },
+                                        "mode": "development",
+                                        "stage": "development",
+                                        "context": "F:\\Workspaces\\Libraries\\vue-babylonjs",
+                                        "url": "http://localhost",
+                                        "port": "${PORT:=8080}",
+                                        "dir": "F:\\Workspaces\\Libraries\\vue-babylonjs",
+                                        "properties": {
+                                            "cdn": "/",
+                                            "api": "http://localhost:1/v1/",
+                                            "root": "http://localhost:${PORT:=8080}/",
+                                            "domain": "beg-in.github.io",
+                                            "dist": "docs",
+                                            "browsers": "last 2 versions",
+                                            "stage": "development",
+                                            "name": "vue-babylonjs",
+                                            "version": "1.0.0-beta.7",
+                                            "description": "A ready-to-go 3d environment for Vue.js using Babylon.js",
+                                            "main": "./site/index.js",
+                                            "title": "Vue-BabylonJS Documentation site",
+                                            "color": "#42b883",
+                                            "public": {
+                                                "cdn": "/",
+                                                "api": "http: //localhost:1/v1/",
+                                                "root": "http://localhost:${PORT:=8080}/",
+                                                "stage": "development",
+                                                "name": "vue-babylonjs",
+                                                "version": "1.0.0-beta.7",
+                                                "description": "A ready-to-go 3d environment for Vue.js using Babylon.js"
+                                            }
+                                        },
+                                        "main": "F:\\Workspaces\\Libraries\\vue-babylonjs\\site\\index.js",
+                                        "base": ""
+                                    },
+                                    "plugins": [
+                                        {}
+                                    ],
+                                    "filters": {}
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "test": {},
+                "use": [
+                    "file-loader",
+                    "image-webpack-loader?bypassOnDebug"
+                ]
+            },
+            {
+                "test": {},
+                "loader": "file-loader"
+            },
+            {
+                "test": {},
+                "use": [
+                    "raw-loader",
+                    "glslify-loader"
+                ]
+            },
+            {
+                "test": {},
+                "loader": "vue-loader"
+            },
+            {
+                "test": {},
+                "loader": "vue-svg-loader",
+                "options": {
+                    "svgo": {
+                        "plugins": [
+                            {
+                                "removeComments": true
+                            },
+                            {
+                                "removeDimensions": true
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    },
+    "optimization": {
+        "splitChunks": {
+            "cacheGroups": {
+                "styles": {
+                    "name": "styles",
+                    "test": {},
+                    "chunks": "all",
+                    "enforce": true
+                }
+            }
+        }
+    }
+}
