@@ -32,6 +32,6 @@ module.exports = ({ properties: { main }, context, toContext }) => {
 
   return {
     main,
-    base: main.substring(0, main.lastIndexOf('/')),
+    base: main.substring(0, main.lastIndexOf('\\')),
   };
 };
