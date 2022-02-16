@@ -1,4 +1,5 @@
-import { BABYLON } from 'vue-babylonjs';
+// import { BABYLON } from 'vue-babylonjs';
+import { BABYLON } from '../src/index';
 
 import VERTEX from './vertex.glsl';
 import FRAGMENT from './fragment.glsl';

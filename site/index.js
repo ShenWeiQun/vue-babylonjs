@@ -1,9 +1,10 @@
 /* eslint-disable import/no-unresolved, import/no-webpack-loader-syntax, import/first */
 import 'file-loader?name=CNAME!./CNAME';
 import Vue from 'vue';
-import build from 'begin-build';
-import { create, register } from 'begin-build/router';
-import vb from 'vue-babylonjs';
+import { create, register } from './router';
+import build from './main';
+import vb from '../src/index';
+// import vb from 'vue-babylonjs';
 
 Vue.use(vb);
 

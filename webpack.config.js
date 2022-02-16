@@ -1,80 +1,122 @@
 'use strict';
 
-/* eslint-disable global-require, import/no-dynamic-require, security/detect-non-literal-require */
-let path = require('path');
-let assignDeep = require('begin-util/assign-deep');
-let { isRegex, isObject, isFunction } = require('begin-util');
-let properties = require('./config/properties');
-let main = require('./config/main');
+const path = require('path');
+const loadLanguages = require('prismjs/components/index');
+const { VueLoaderPlugin } = require('vue-loader');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const prism = require('prismjs');
 
-module.exports = (options = {}, argv = {}) => {
-  let {
-    stage = 'production',
-    context = process.cwd(),
-    url = 'http://localhost',
-    port = 8080,
-  } = options;
-  let development = stage === 'development';
-  let { mode = development ? 'development' : 'production' } = argv;
-
-  let api = {
-    development,
-    options,
-    argv,
-    package: require(path.join(context, 'package')),
-    mode,
-    stage,
-    context,
-    url,
-    port,
-    dir: __dirname,
-    toContext: (...args) => path.join(context, ...args),
-    properties: {},
-  };
-  try {
-    api.properties = require(path.join(api.context, 'properties'));
-  } catch (e) {
-    console.warn('properties.js not found in project');
+const hl = (text, { lang = 'markup' } = {}) => {
+  if (text[0] === '\n') {
+    text = text.substring(1);
   }
-  api.properties = properties(api);
-  Object.assign(api, main(api));
+  return `<code lang="${lang}">${prism.highlight(text, prism.languages[lang], lang)}</code>`;
+};
+const properties = {
+  name: 'vue-babylonjs',
+  description: 'A ready-to-go 3d environment for Vue.js using Babylon.js',
+  title: 'Vue-BabylonJS Documentation site',
+  color: '#42b883',
+  public: {
+    cdn: '/',
+    api: 'http: //localhost:1/v1/',
+    stage: 'development',
+    name: 'vue-babylonjs',
+    version: '1.0.0-beta.7',
+    description: 'A ready-to-go 3d environment for Vue.js using Babylon.js',
+  },
+};
 
-  let parts;
-  if (isFunction(api.properties.config)) {
-    parts = api.properties.config(api);
-  } else {
-    parts = Object.assign({}, require('./config/basic'));
-  }
+loadLanguages(['pug', 'bash']);
+module.exports = {
+  mode: 'development',
+  devtool: 'eval-source-map',
+  entry: {
+    main: './site/index.js',
+  },
+  output: {
+    path: path.resolve(__dirname, './docs'),
+    publicPath: '/',
+    filename: '[id].js',
+  },
+  plugins: [
+    new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './site/index.pug'),
+      favicon: path.resolve(__dirname, './site/favicon.png'),
+    }),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.sass$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                indentedSyntax: true,
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          'vue-svg-loader',
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif|glsl)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
+      {
+        test: /\.pug$/,
+        oneOf: [
+          // 这条规则应用到 Vue 组件内的 `<template lang="pug">`
+          {
+            resourceQuery: /^\?vue/,
 
-  let merged = Object.values(parts).reduce((config, part) => assignDeep(config, part(Object.assign({ config }, api))), {});
+            use: {
+              loader: 'pug-plain-loader',
+              options: {
+                filters: { hl },
+                data: {
+                  hl,
+                  properties,
+                },
+              },
+            },
+          },
+          // 这条规则应用到 JavaScript 内的 pug 导入
+          {
+            use: [
+              {
+                loader: 'raw-loader',
+              },
+              {
+                loader: 'pug-plain-loader',
+                options: {
+                  data: {
+                    properties,
+                  },
+                },
+              },
 
-  let build = tree => {
-    let { $build } = tree;
-    delete tree.$build;
-    tree = Object.entries(tree).reduce((out, [key, value]) => {
-      if (key === '$when' || value === undefined) {
-        return out;
-      }
-      if (!isRegex(value) && isObject(value)) {
-        if (value.$when === false) {
-          return out;
-        }
-        out[key] = build(value);
-        return out;
-      }
-      out[key] = value;
-      return out;
-    }, {});
-    if ($build) {
-      if ($build === Array) {
-        return Object.values(tree);
-      }
-      if (isFunction($build)) {
-        return $build.call(tree, ...Object.values(tree));
-      }
-    }
-    return tree;
-  };
-
-  return build(merged);
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  devServer: {
+    historyApiFallback: true,
+  },
 };
