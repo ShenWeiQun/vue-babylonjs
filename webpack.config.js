@@ -70,8 +70,12 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|gif|glsl)$/i,
+        test: /\.(png|jpg|gif)$/i,
         type: 'asset/resource',
+      },
+      {
+        test: /\.(glsl)$/i,
+        type: 'asset/source',
       },
       {
         test: /\.vue$/,
