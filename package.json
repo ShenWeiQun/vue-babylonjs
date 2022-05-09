@@ -1,6 +1,6 @@
 {
-  "name": "vue-babylonjs",
-  "version": "1.0.0-beta.7",
+  "name": "kaland-vue-babylonjs",
+  "version": "0.0.1",
   "files": [
     "dist/*",
     "lib/*"
@@ -33,7 +33,8 @@
     "build": "webpack --config webpack.config.js",
     "dist:rollup": "rollup --config",
     "dist:uglify": "uglifyjs dist/umd.js -c -m -o dist/umd.min.js",
-    "dist": "npm run dist:rollup && npm run dist:uglify"
+    "dist": "npm run dist:rollup && npm run dist:uglify",
+    "publish": "npm publish"
   },
   "peerDependencies": {
     "vue": "^2.2.0",
