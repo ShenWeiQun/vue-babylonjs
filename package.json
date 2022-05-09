@@ -37,9 +37,9 @@
     "publish": "npm publish"
   },
   "peerDependencies": {
-    "vue": "^2.2.0",
-    "@babylonjs/core": "^4.0.3",
-    "@babylonjs/loaders": "^4.0.3"
+    "vue": "^2.6.14",
+    "@babylonjs/core": "^5.5.5",
+    "@babylonjs/loaders": "^5.5.5"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -48,9 +48,9 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
     "@babel/runtime": "^7.4.5",
-    "@babylonjs/core": "^4.0.3",
-    "@babylonjs/inspector": "^4.0.3",
-    "@babylonjs/loaders": "^4.0.3",
+    "@babylonjs/core": "^5.5.5",
+    "@babylonjs/inspector": "^5.5.5",
+    "@babylonjs/loaders": "^5.5.5",
     "@vue/test-utils": "^1.0.0-beta.25",
     "ava": "^2.0.0",
     "begin-project": "^0.4.3",
@@ -67,7 +67,6 @@
     "jstransformer-pug": "^0.3.0",
     "markdown-it-prism": "^2.0.2",
     "node-sass": "^7.0.1",
-    "npm-check-updates": "^12.3.0",
     "oimo": "^1.0.9",
     "prismjs": "^1.16.0",
     "pug": "^3.0.2",
