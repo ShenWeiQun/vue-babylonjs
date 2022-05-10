@@ -51,6 +51,7 @@
     "@babylonjs/loaders": "^5.5.5",
     "@vue/test-utils": "^1.0.0-beta.25",
     "ava": "^2.0.0",
+    "babylonjs": "^5.5.6",
     "begin-project": "^0.4.3",
     "cannon": "^0.6.2",
     "css-loader": "^6.6.0",
