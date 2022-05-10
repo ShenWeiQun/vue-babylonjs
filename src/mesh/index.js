@@ -1,5 +1,5 @@
 import earcut from 'earcut';
-import { MeshBuilder } from '@babylonjs/core';
+import { MeshBuilder } from 'babylonjs';
 import AbstractMesh from './abstract';
 
 const prepare = fn => ({

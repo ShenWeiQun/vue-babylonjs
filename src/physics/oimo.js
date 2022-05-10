@@ -1,5 +1,5 @@
 import * as oimo from 'oimo';
-import { OimoJSPlugin as Plugin } from '@babylonjs/core';
+import { OimoJSPlugin as Plugin } from 'babylonjs';
 import AbstractPhysics from './abstract';
 
 export default {

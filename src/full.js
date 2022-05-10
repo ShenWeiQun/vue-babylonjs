@@ -1,4 +1,4 @@
-import * as BABYLON from '@babylonjs/core';
+import * as BABYLON from 'babylonjs';
 import { install as init } from './core';
 import { Cannon as Physics } from './physics';
 import * as mixins from './mixins';

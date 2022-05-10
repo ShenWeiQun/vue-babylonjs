@@ -1,4 +1,4 @@
-import { Matrix } from '@babylonjs/core';
+import { Matrix } from 'babylonjs';
 import { isFloatArray } from '../util';
 
 export const toMatrix = value => {

@@ -1,5 +1,5 @@
 // import { Engine, Scene, Color3, Vector3 } from 'babylonjs';
-import { Engine, Scene, Color3, Vector3 } from '@babylonjs/core';
+import { Engine, Scene, Color3, Vector3 } from 'babylonjs';
 import { createBus, defer } from '../util';
 import { vecValidator as validator, toVec3 } from '../types/vector';
 import { color3, toColor3 } from '../types/color';

@@ -1,4 +1,4 @@
-import { Texture } from '@babylonjs/core';
+import { Texture } from 'babylonjs';
 import AbstractEntity from '../entity/abstract';
 
 const TYPES = {

@@ -1,4 +1,4 @@
-import { Color3, StandardMaterial, PBRMaterial } from '@babylonjs/core';
+import { Color3, StandardMaterial, PBRMaterial } from 'babylonjs';
 import AbstractEntity from '../entity/abstract';
 import { color3, toColor3 } from '../types/color';
 

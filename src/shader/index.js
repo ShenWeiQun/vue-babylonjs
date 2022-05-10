@@ -1,4 +1,4 @@
-import { Effect, ShaderMaterial } from '@babylonjs/core';
+import { Effect, ShaderMaterial } from 'babylonjs';
 import AbstractEntity from '../entity/abstract';
 import { id } from '../util';
 

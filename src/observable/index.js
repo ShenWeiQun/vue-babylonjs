@@ -1,4 +1,4 @@
-import { Observable } from '@babylonjs/core';
+import { Observable } from 'babylonjs';
 import { camelize, last } from '../util';
 
 export function registerObservers(scene) {
@@ -26,7 +26,7 @@ export function registerObservers(scene) {
     } else if (scene && scene[name] instanceof Observable) {
       observable = scene[name];
     } else {
-      console.warn(`Could not find Observable with name ${name}`)
+      console.warn(`Could not find Observable with name ${name}`);
       return out;
     }
     let observer = null;

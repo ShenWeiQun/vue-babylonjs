@@ -13,7 +13,7 @@ import {
   QuinticEase as quintic,
   SineEase as sine,
   BezierCurveEase as bezierCurve,
-} from '@babylonjs/core';
+} from 'babylonjs';
 import AbstractEntity from '../entity/abstract';
 import { isFloat } from '../util';
 

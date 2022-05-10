@@ -1,4 +1,4 @@
-import { HemisphericLight } from '@babylonjs/core';
+import { HemisphericLight } from 'babylonjs';
 import DirectionalLight from './directional';
 
 export default {

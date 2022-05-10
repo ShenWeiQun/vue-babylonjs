@@ -1,4 +1,4 @@
-import { Color3, Color4 } from '@babylonjs/core';
+import { Color3, Color4 } from 'babylonjs';
 import { isFloatArray, isBetween0and1 } from '../util';
 
 /* eslint-disable security/detect-unsafe-regex */

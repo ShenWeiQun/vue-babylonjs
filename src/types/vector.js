@@ -1,4 +1,4 @@
-import { Vector2, Vector3, Vector4 } from '@babylonjs/core';
+import { Vector2, Vector3, Vector4 } from 'babylonjs';
 import { isFloat, isFloatArray } from '../util';
 
 export const vecValidator = (value, type = Vector2) => {
@@ -60,7 +60,7 @@ export const $vector = (...value) => {
   }
   if (vecValidator(value, Vector4)) {
     return toVec4(value);
-  } else if (vecValidator(value, Vector3)) {
+  } if (vecValidator(value, Vector3)) {
     return toVec3(value);
   }
   return toVec2(value);

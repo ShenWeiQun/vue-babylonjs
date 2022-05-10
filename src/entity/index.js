@@ -1,4 +1,4 @@
-import { Vector3, MeshBuilder } from '@babylonjs/core';
+import { Vector3, MeshBuilder } from 'babylonjs';
 import AbstractEntity from '../entity/abstract';
 import { vec3, toVec3 } from '../types/vector';
 

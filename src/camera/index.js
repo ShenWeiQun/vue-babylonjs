@@ -8,7 +8,7 @@ import {
   DeviceOrientationCamera as deviceOrientation,
   TouchCamera as touch,
   GamepadCamera as gamepad,
-} from '@babylonjs/core';
+} from 'babylonjs';
 import AbstractEntity from '../entity/abstract';
 import { vec3, toVec3 } from '../types/vector';
 
