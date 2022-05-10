@@ -34,12 +34,10 @@
     "dist:rollup": "rollup --config",
     "dist:uglify": "uglifyjs dist/umd.js -c -m -o dist/umd.min.js",
     "dist": "npm run dist:rollup && npm run dist:uglify",
-    "publish": "npm publish"
+    "publish": "npm run dist && npm publish --registry=https://maven.klcgis.com/repository/local-npm/"
   },
   "peerDependencies": {
-    "vue": "^2.6.14",
-    "@babylonjs/core": "^5.5.5",
-    "@babylonjs/loaders": "^5.5.5"
+    "vue": "^2.6.14"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -94,5 +92,9 @@
   },
   "dependencies": {
     "vue": "^2.6.14"
-  }
+  },
+  "bundleDependencies": [
+    "@babylonjs/core",
+    "@babylonjs/loaders"
+  ]
 }
