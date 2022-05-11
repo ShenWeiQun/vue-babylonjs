@@ -1,4 +1,4 @@
-import '@babylonjs/loaders';
+import 'babylonjs-loaders';
 import { SceneLoader } from 'babylonjs';
 import Entity from '../entity';
 

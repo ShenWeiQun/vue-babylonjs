@@ -29,8 +29,9 @@ export default [{
     file: 'dist/esm.js',
   },
   external: [
-    '@babylonjs/core',
-    '@babylonjs/loaders',
+    'babylonjs',
+    'babylonjs-gui',
+    'babylonjs-loaders',
   ],
   plugins,
 }, {
