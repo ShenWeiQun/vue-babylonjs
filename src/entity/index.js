@@ -1,5 +1,5 @@
 import { Vector3, MeshBuilder } from 'babylonjs';
-import AbstractEntity from '../entity/abstract';
+import AbstractEntity from './abstract';
 import { vec3, toVec3 } from '../types/vector';
 
 const { validator } = vec3;
