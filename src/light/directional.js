@@ -1,5 +1,5 @@
 import { DirectionalLight } from 'babylonjs';
-import AbstractLight from './';
+import AbstractLight from '.';
 import { vec3, toVec3 } from '../types/vector';
 
 export default {

@@ -61,59 +61,64 @@ export default {
   },
 
   props: {
-    type: {
+    subname: { // 要创建动画的子模型名字
+      type: String,
+      default: null,
+    },
+
+    type: { // 要执行动画的属性的类型
       validator: value => Object.values(TYPES).includes(value),
       default: Object.values(TYPES)[0],
     },
 
-    mode: {
+    mode: { // 动画的循环模式
       validator: value => Object.values(MODES).includes(value),
       default: Object.values(MODES)[0],
     },
 
-    property: {
+    property: { // 要执行动画化的属性
       type: String,
     },
 
-    fps: {
+    fps: { // 动画的每秒帧数
       type: Number,
       default: 60,
     },
 
-    from: {
+    from: { // 动画要开始的帧编号
       type: Number,
       default: 0,
     },
 
-    to: {
+    to: { // 动画结束的帧编号
       type: Number,
       default: 60,
     },
 
-    duration: {
+    duration: { // 动画的长度（以秒为单位）
       type: Number,
       default: null,
     },
 
-    start: {
+    start: { // 设置动画效果的属性的起始值
       default: 0,
     },
 
-    end: {
+    end: { // 设置动画效果的属性的结束值
       default: 1,
     },
 
-    loop: {
+    loop: { // 是否循环播放动画（默认为 true）
       type: Boolean,
       default: true,
     },
 
-    speedRatio: {
+    speedRatio: { // 动画的速度比
       type: Number,
       default: 1,
     },
 
-    animatable: {
+    animatable: { // babylonjs的特定动画对象
       type: Object,
       default: null,
     },
@@ -290,6 +295,21 @@ export default {
         this.$entity.setKeys(this.frames);
       }
     },
+    // 设置动画目标
+    setTarget(parent, scene) {
+      let { subname } = this;
+      let submodel = null;
+      if (subname) {
+        submodel = scene.getMeshByName(subname);
+      }
+      if (submodel) {
+        if (!submodel.animations) {
+          submodel.animations = [];
+        }
+        return submodel;
+      }
+      return parent;
+    },
   },
 
   watch: {
@@ -379,9 +399,11 @@ export default {
   onParent({ parent, entity, scene }) {
     this.setEasingFunction();
     this.setFrames();
-    parent.animations.push(entity);
-    scene.beginAnimation(parent, this.from, this.finish, this.loop, this.speedRatio, () => {
+    const target = this.setTarget(parent, scene);
+    target.animations.push(entity);
+    scene.beginAnimation(target, this.from, this.finish, this.loop, this.speedRatio, () => {
       this.$event.$emit('end');
     }, this.animatable);
   },
+
 };

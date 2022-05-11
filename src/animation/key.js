@@ -8,12 +8,12 @@ export default {
   mixins: [AbstractEntity],
 
   props: {
-    frame: {
+    frame: { // 此关键帧表示的帧编号或持续时间的字符串百分比
       validator: value => isFloat(value) || isPercent(value),
       default: 0,
     },
 
-    value: {
+    value: { // 要在此关键帧处将属性设置为的值
       default: 0,
     },
 

@@ -69,7 +69,7 @@ export default {
       default: false,
     },
 
-    debug: {
+    debug: { // 启用调试模式 - 默认值false
       type: Boolean,
       default: false,
     },
