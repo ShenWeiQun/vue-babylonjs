@@ -1,4 +1,7 @@
-import { Vector3, MeshBuilder } from 'babylonjs';
+import { Vector3,
+  MeshBuilder,
+  ActionManager,
+  ExecuteCodeAction } from 'babylonjs';
 import AbstractEntity from './abstract';
 import { vec3, toVec3 } from '../types/vector';
 
@@ -13,6 +16,10 @@ export default {
     scaling: {
       validator,
       default: () => Vector3.One(),
+    },
+    registerAction: {
+      type: Boolean,
+      default: false,
     },
   },
 
@@ -61,6 +68,25 @@ export default {
       if (this.$entity && this.$entity.scaling) {
         this.$entity.scaling.copyFrom(this._$_scalingVector3);
       }
+    },
+    _$_registerActionManager(name = '') {
+      if (!this.registerAction) return;
+      const { $scene, $entity } = this;
+      let submodel = $scene.getMeshByName(name);
+
+      if (!submodel) {
+        submodel = $entity;
+      }
+      submodel.actionManager = new ActionManager($scene);
+      submodel.actionManager.registerAction(
+        new ExecuteCodeAction(
+          ActionManager.OnPickUpTrigger,
+          (evt => {
+            this.$emit('pickUpTrigger', evt);
+          }),
+        ),
+      );
+      submodel.isPickable = true;
     },
   },
 

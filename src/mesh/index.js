@@ -8,6 +8,9 @@ const prepare = fn => ({
   onScene({ name, scene }) {
     return fn(name, this.options, scene, earcut);
   },
+  onParent() {
+    this._$_registerActionManager();
+  },
 });
 
 // TODO: add CreateDecal(name, sourceMesh, options)

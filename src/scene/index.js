@@ -1,5 +1,5 @@
 // import { Engine, Scene, Color3, Vector3 } from 'babylonjs';
-import { Engine, Scene, Color3, Vector3 } from 'babylonjs';
+import { Engine, Scene, Color3, Vector3, HighlightLayer } from 'babylonjs';
 import { createBus, defer } from '../util';
 import { vecValidator as validator, toVec3 } from '../types/vector';
 import { color3, toColor3 } from '../types/color';
@@ -193,6 +193,8 @@ export default {
       this.requestFullScreen();
       this.debugLayer();
       this.scene.executeWhenReady(this.resize); // HACK: investigate sqaush effect on initial load
+
+      this.setHighlightLayer();
     },
 
     setGravity() {
@@ -207,6 +209,20 @@ export default {
 
     complete({ name, entity }) {
       this._$_children[name].complete({ name, entity });
+    },
+
+    // 设置一个统一的高亮图层
+    setHighlightLayer() {
+      const { scene } = this;
+      const hl = new HighlightLayer('_hl1', scene);
+      this.sceneBus.$on('addMeshToHighlightLayer', ({ name, color }) => {
+        const mesh = scene.getMeshByName(name);
+        hl.addMesh(mesh, new Color3(...color));
+      });
+      this.sceneBus.$on('removeMeshForHighlightLayer', ({ name }) => {
+        const mesh = scene.getMeshByName(name);
+        hl.removeMesh(mesh);
+      });
     },
   },
 

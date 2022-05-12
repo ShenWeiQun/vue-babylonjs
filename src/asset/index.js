@@ -11,12 +11,28 @@ export default {
       type: String,
       default: null,
     },
-    modelState: {
+    modelState: { // 模型状态
       type: Array,
       default: [],
     },
+    actionMeshs: { // 模型行为
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+    highlightMeshs: { // 要高亮的模型
+      type: Array,
+      default() {
+        return [];
+      },
+    },
   },
-
+  computed: {
+    newHighlightMeshs() {
+      return JSON.parse(JSON.stringify(this.highlightMeshs));
+    },
+  },
   watch: {
     src() {
       this.loadAssetContainer();
@@ -24,6 +40,12 @@ export default {
     modelState: {
       handler() {
         this.changeState();
+      },
+      deep: true,
+    },
+    newHighlightMeshs: {
+      handler(a, b) {
+        this.setHighlightMeshs(a, b);
       },
       deep: true,
     },
@@ -45,6 +67,8 @@ export default {
       assetContainer.addAllToScene();
 
       this.changeState();
+      this.addActionManager();
+      this.setHighlightMeshs();
     },
     changeState() {
       const { $scene, modelState } = this;
@@ -73,6 +97,26 @@ export default {
       const materialC = material.clone();
       materialC.name = name;
       return materialC;
+    },
+    addActionManager() {
+      const { actionMeshs } = this;
+
+      if (actionMeshs.length > 0) {
+        actionMeshs.forEach(item => {
+          this._$_registerActionManager(item);
+        });
+      } else {
+        this._$_registerActionManager();
+      }
+    },
+
+    setHighlightMeshs(val = this.highlightMeshs, oldVal = []) {
+      oldVal.forEach(item => {
+        this.$sceneBus.$emit('removeMeshForHighlightLayer', item);
+      });
+      val.forEach(item => {
+        this.$sceneBus.$emit('addMeshToHighlightLayer', item);
+      });
     },
   },
 
