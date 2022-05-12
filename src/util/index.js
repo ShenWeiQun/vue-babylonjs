@@ -1,3 +1,5 @@
+import { Angle } from 'babylonjs';
+
 export const isFloat = value => Number.isFinite(value) && !Number.isNaN(value);
 
 export const isFloatArray = value => Array.isArray(value) && value.every(isFloat);
@@ -37,3 +39,7 @@ export const defer = () => {
   Object.assign(promise, { complete, error });
   return promise;
 };
+// 角度制转弧度制
+export const degreesToRadians = (...args) => args.map(item => Angle.FromDegrees(item).radians());
+// 弧度制转角度制
+export const radiansToDegrees = (...args) => args.map(item => Angle.FromRadians(item).degrees());
