@@ -12,3 +12,11 @@ export const VERTICALALIGNMENT = {
   VERTICAL_ALIGNMENT_BOTTOM: GUI.Control.VERTICAL_ALIGNMENT_BOTTOM, // 底部
   VERTICAL_ALIGNMENT_CENTER: GUI.Control.VERTICAL_ALIGNMENT_CENTER, // 中心
 };
+// 动画状态
+export const ANIMATIONSTATES = {
+  PLAY: 'reset', // 播放的设置方式还有待商榷
+  PAUSE: 'pause',
+  RESTART: 'restart',
+  STOP: 'stop',
+  RESET: 'reset',
+};

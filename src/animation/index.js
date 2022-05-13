@@ -16,6 +16,7 @@ import {
 } from 'babylonjs';
 import AbstractEntity from '../entity/abstract';
 import { isFloat } from '../util';
+import { ANIMATIONSTATES } from '../util/constants';
 
 const EASINGS = {
   circle,
@@ -61,6 +62,11 @@ export default {
   },
 
   props: {
+    animationState: { // 控制动画的状态
+      validator: value => Object.values(ANIMATIONSTATES).includes(value),
+      default: Object.values(ANIMATIONSTATES)[0],
+    },
+
     subname: { // 要创建动画的子模型名字
       type: String,
       default: null,
@@ -118,10 +124,10 @@ export default {
       default: 1,
     },
 
-    animatable: { // babylonjs的特定动画对象
-      type: Object,
-      default: null,
-    },
+    // animatable: { // babylonjs的特定动画对象
+    //   type: Object,
+    //   default: null,
+    // },
 
     blending: {
       type: Boolean,
@@ -310,6 +316,32 @@ export default {
       }
       return parent;
     },
+    // 控制动画状态
+    setAnimationState() {
+      const { animatable, animationState } = this;
+      if (animatable) {
+        switch (animationState) {
+          case ANIMATIONSTATES.PLAY: // 播放的设置方式还有待商榷
+            animatable.restart();
+            break;
+          case ANIMATIONSTATES.PAUSE:
+            animatable.pause();
+            break;
+          case ANIMATIONSTATES.RESTART:
+            animatable.restart();
+            break;
+          case ANIMATIONSTATES.STOP:
+            animatable.stop();
+            break;
+          case ANIMATIONSTATES.RESET:
+            animatable.reset();
+            break;
+
+          default:
+            break;
+        }
+      }
+    },
   },
 
   watch: {
@@ -351,6 +383,10 @@ export default {
       } else {
         this.disableBlending();
       }
+    },
+
+    animationState() {
+      this.setAnimationState();
     },
   },
 
@@ -401,9 +437,10 @@ export default {
     this.setFrames();
     const target = this.setTarget(parent, scene);
     target.animations.push(entity);
-    scene.beginAnimation(target, this.from, this.finish, this.loop, this.speedRatio, () => {
+    this.animatable = scene.beginAnimation(target, this.from, this.finish, this.loop, this.speedRatio, () => {
       this.$event.$emit('end');
-    }, this.animatable);
+    });
+    this.setAnimationState();
   },
 
 };
