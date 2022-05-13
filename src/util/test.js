@@ -1,5 +1,5 @@
 import test from 'ava';
-import { camelize } from './';
+import { camelize } from '.';
 
 const CAMEL = 'SomeNameValue';
 let camelizeMacro = (t, input) => t.is(camelize(input), CAMEL);

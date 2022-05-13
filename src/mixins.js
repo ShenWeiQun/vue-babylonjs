@@ -18,3 +18,4 @@ export { default as Attribute } from './shader/attribute';
 export { default as Uniform } from './shader/uniform';
 export * from './mesh';
 export * from './gui';
+export * from './util/constants';
