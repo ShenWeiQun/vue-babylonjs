@@ -1,7 +1,7 @@
 import { Observable } from 'babylonjs';
 import { camelize, last } from '../util';
 
-export function registerObservers(scene) {
+export default function registerObservers(scene) {
   let observers = Object.keys(this.$listeners).reduce((out, key) => {
     let name = key;
     let [first, ...rest] = name;

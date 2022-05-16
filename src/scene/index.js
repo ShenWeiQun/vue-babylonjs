@@ -3,7 +3,7 @@ import { Engine, Scene, Color3, Vector3, HighlightLayer } from 'babylonjs';
 import { createBus, defer } from '../util';
 import { vecValidator as validator, toVec3 } from '../types/vector';
 import { color3, toColor3 } from '../types/color';
-import { registerObservers } from '../observable';
+import registerObservers from '../observable';
 
 const FOG_TYPES = {
   NONE: 'none',

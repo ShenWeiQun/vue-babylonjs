@@ -13,7 +13,9 @@ export default {
     },
     modelState: { // 模型状态
       type: Array,
-      default: [],
+      default() {
+        return [];
+      },
     },
     actionMeshs: { // 模型行为
       type: Array,

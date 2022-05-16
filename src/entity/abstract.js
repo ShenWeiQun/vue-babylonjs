@@ -1,5 +1,5 @@
 import { id, isDisposable, createBus, defer } from '../util';
-import { registerObservers } from '../observable';
+import registerObservers from '../observable';
 
 export default {
   inject: {
