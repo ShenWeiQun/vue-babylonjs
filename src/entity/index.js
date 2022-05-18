@@ -1,6 +1,7 @@
 import { Vector3,
   MeshBuilder,
   ActionManager,
+  StandardMaterial,
   ExecuteCodeAction } from 'babylonjs';
 import AbstractEntity from './abstract';
 import { vec3, toVec3 } from '../types/vector';
@@ -69,6 +70,7 @@ export default {
         this.$entity.scaling.copyFrom(this._$_scalingVector3);
       }
     },
+    // 为实体注册事件管理器
     _$_registerActionManager(name = '') {
       if (!this.registerAction) return;
       const { $scene, $entity } = this;
@@ -88,6 +90,22 @@ export default {
       );
       submodel.isPickable = true;
     },
+    // 销毁实体的事件管理器
+    _$_disposeActionManager(name = '') {
+      const { $scene, $entity } = this;
+      let submodel = $scene.getMeshByName(name);
+
+      if (!submodel) {
+        submodel = $entity;
+      }
+      if (submodel.actionManager) {
+        submodel.actionManager.actions.forEach(item => {
+          submodel.actionManager.unregisterAction(item);
+        });
+
+        submodel.actionManager.dispose();
+      }
+    },
   },
 
   created() {
@@ -103,6 +121,7 @@ export default {
     if (!this.$entity) {
       // HACK: TransformNode does not implement IPhysicsEnabledObject, so using invisible box instead
       let box = MeshBuilder.CreateBox(this.name, {}, this.$scene);
+      box.material = new StandardMaterial();
       box.isVisible = false;
       this.$entity = box;
     }

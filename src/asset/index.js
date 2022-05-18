@@ -34,6 +34,9 @@ export default {
     newHighlightMeshs() {
       return JSON.parse(JSON.stringify(this.highlightMeshs));
     },
+    newActionMeshs() {
+      return JSON.parse(JSON.stringify(this.actionMeshs));
+    },
   },
   watch: {
     src() {
@@ -48,6 +51,12 @@ export default {
     newHighlightMeshs: {
       handler(a, b) {
         this.setHighlightMeshs(a, b);
+      },
+      deep: true,
+    },
+    newActionMeshs: {
+      handler(a, b) {
+        this.addActionManager(b);
       },
       deep: true,
     },
@@ -100,16 +109,24 @@ export default {
       materialC.name = name;
       return materialC;
     },
-    addActionManager() {
+    addActionManager(oldVal = []) {
       const { actionMeshs } = this;
 
+      // 移除旧的事件
+      oldVal.forEach(item => {
+        this._$_disposeActionManager(item);
+      });
+
+      // 添加新的事件
       if (actionMeshs.length > 0) {
         actionMeshs.forEach(item => {
           this._$_registerActionManager(item);
         });
-      } else {
-        this._$_registerActionManager();
       }
+      // 如果没有指定子模型则对整个模型添加事件
+      // else {
+      //   this._$_registerActionManager();
+      // }
     },
 
     setHighlightMeshs(val = this.highlightMeshs, oldVal = []) {

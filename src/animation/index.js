@@ -1,6 +1,7 @@
 import {
   EasingFunction,
   Animation,
+  AnimationEvent,
   CircleEase as circle,
   BackEase as back,
   BounceEase as bounce,
@@ -92,6 +93,11 @@ export default {
     },
 
     from: { // 动画要开始的帧编号
+      type: Number,
+      default: 0,
+    },
+
+    actualFrom: { // 动画实际开始的帧编号
       type: Number,
       default: 0,
     },
@@ -281,6 +287,14 @@ export default {
     animationLoopMode() {
       return Animation[`ANIMATIONLOOPMODE_${this.mode.toUpperCase()}`];
     },
+    localProperty() {
+      const { property } = this;
+      // 如果前缀为material则特殊处理下
+      if (property.startsWith('material')) {
+        return property.substring(9);
+      }
+      return property;
+    },
   },
 
   methods: {
@@ -297,24 +311,45 @@ export default {
     },
 
     setFrames() {
-      if (this.$entity) {
-        this.$entity.setKeys(this.frames);
+      const { $entity, frames, localProperty, target } = this;
+      if ($entity) {
+        const propertys = localProperty.split('.');
+        let attribute = target;
+
+        propertys.forEach(element => {
+          attribute = attribute[element];
+        });
+
+        // 默认如果设置的关键帧的值为0，则替换为该属性的默认值
+        frames.forEach(element => {
+          if (element.value === 0) {
+            element.value = attribute;
+          }
+        });
+
+        $entity.setKeys(frames);
       }
     },
     // 设置动画目标
     setTarget(parent, scene) {
-      let { subname } = this;
+      let { subname, property } = this;
+      let target = parent;
       let submodel = null;
       if (subname) {
         submodel = scene.getMeshByName(subname);
       }
+      // 如果指定了子模型，则目标设置为子模型
       if (submodel) {
-        if (!submodel.animations) {
-          submodel.animations = [];
-        }
-        return submodel;
+        target = submodel;
       }
-      return parent;
+      // 如果是要对材质进行操作，则设置目标为模型的材质
+      if (property.startsWith('material')) {
+        target = target.material;
+      }
+      if (!target.animations) {
+        target.animations = [];
+      }
+      return target;
     },
     // 控制动画状态
     setAnimationState() {
@@ -342,6 +377,19 @@ export default {
         }
       }
     },
+    // 添加事件到特定动画帧上
+    attachEventsToFrames(frames, callback) {
+      const { $entity } = this;
+      let eventF = new AnimationEvent(
+        frames,
+        (currentFrame => {
+          callback(currentFrame);
+        }),
+        true,
+      );
+      $entity.removeEvents(frames);
+      $entity.addEvent(eventF);
+    },
   },
 
   watch: {
@@ -350,7 +398,7 @@ export default {
     },
 
     property() {
-      this.$entity.targetProperty = this.property;
+      this.$entity.targetProperty = this.localProperty;
     },
 
     animationType() {
@@ -429,18 +477,33 @@ export default {
   },
 
   onScene({ name }) {
-    return new Animation(name, this.property, this.fps, this.animationType, this.animationLoopMode);
+    return new Animation(name, this.localProperty, this.fps, this.animationType, this.animationLoopMode);
   },
 
   onParent({ parent, entity, scene }) {
+    const target = this.setTarget(parent, scene);
+    this.target = target;
     this.setEasingFunction();
     this.setFrames();
-    const target = this.setTarget(parent, scene);
+
     target.animations.push(entity);
     this.animatable = scene.beginAnimation(target, this.from, this.finish, this.loop, this.speedRatio, () => {
       this.$event.$emit('end');
     });
     this.setAnimationState();
+
+    // 为当前动画的最后一帧设置事件,并触发动画完成事件
+    this.attachEventsToFrames(this.finish, () => {
+      this.$emit('animationEnd');
+    });
+    // 将动画真正开始的那一帧设置的开始之前事件
+    this.attachEventsToFrames(this.actualFrom, () => {
+      this.$emit('animationBeforeStart');
+    });
+    // 为当前动画的开始的一帧的下一帧设置事件,并触发动画开始事件
+    this.attachEventsToFrames(this.actualFrom + 1, () => {
+      this.$emit('animationStart');
+    });
   },
 
 };

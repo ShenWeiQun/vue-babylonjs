@@ -98,6 +98,11 @@ export default {
         this._$_destroyed = true;
         this.$entity.dispose();
         this._$_destroyed = false;
+
+        const { material } = this.$entity; // 如果该实体存在材质，则需要销毁
+        if (material) {
+          material.dispose();
+        }
       }
       this.$entity = entity;
       await this._$_init();
