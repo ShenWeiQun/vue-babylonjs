@@ -37,6 +37,7 @@ import texture from './texture.vue';
 import types from './types.vue';
 import about from './about.vue';
 import asset from './asset.vue';
+import hello from './hello.vue';
 
 register([
   ...Object.entries({
@@ -57,6 +58,7 @@ register([
     texture,
     types,
     about,
+    hello,
   }).map(([name, component]) => ({
     name,
     path: `/${name}`,

@@ -71,6 +71,10 @@ export default {
               a Texture
             router-link(tag="li" to="/types")
               a Types
+            li
+              .folder-name Example
+            router-link(tag="li" to="/hello")
+              a hello
             .frow
               external.github-logo(href="https://github.com/Beg-in/vue-babylonjs") #[Logo]
           p &copy; {{new Date().getFullYear()}} Brian Jesse
