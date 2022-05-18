@@ -84,19 +84,19 @@ export default {
     changeState() {
       const { $scene, modelState } = this;
 
-      modelState.forEach(({ name, position, rotation, scaling, material }) => {
+      modelState.forEach(({ name, position, rotation, scaling, material, visibility }) => {
         const submodel = $scene.getMeshByName(name);
 
         // 设置材质属性
         const materialC = this.copyMaterial(name, submodel.material);
-        materialC.diffuseColor.set(...material.diffuse);
-        materialC.alpha = material.alpha;
+        materialC.diffuseColor.set(...Object.values(material.diffuseColor));
         submodel.material = materialC;
 
         // 设置模型属性
-        submodel.position.set(...position);
-        submodel.rotation.set(...degreesToRadians(...rotation));
-        submodel.scaling.set(...scaling);
+        submodel.position.set(...Object.values(position));
+        submodel.rotation.set(...degreesToRadians(...Object.values(rotation)));
+        submodel.scaling.set(...Object.values(scaling));
+        submodel.visibility = visibility;
       });
     },
     copyMaterial(name, material) {
