@@ -3,6 +3,8 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import cleanup from 'rollup-plugin-cleanup';
 // import { fileSync as find } from 'find';
+import * as BABYLON from 'babylonjs';
+import * as GUI from 'babylonjs-gui';
 
 const name = 'VueBabylonjs';
 const plugins = [
@@ -14,6 +16,10 @@ const plugins = [
   }),
   commonjs({
     include: 'node_modules/**',
+    namedExports: {
+      babylonjs: Object.keys(BABYLON),
+      'babylonjs-gui': Object.keys(GUI),
+    },
   }),
   cleanup(),
 ];
