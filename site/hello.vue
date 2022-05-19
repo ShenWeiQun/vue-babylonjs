@@ -132,14 +132,14 @@ export default {
               stepName: '打开电源',
               actionMethod: 'turnOn',
               componentId: 4453491899935508,
-              componentName: '面板电源开头',
+              componentName: 'rb211_stru',
               state_: 1,
               duration: 2000,
               commentary: '解说词1',
               terminals: [
                 {
                   componentId: 4453491899935580,
-                  componentName: 'rb211_fan2',
+                  meshName: 'rb211_fan2',
                   state_: 1,
                   style_: {
                     rotation: {
@@ -161,7 +161,7 @@ export default {
               commentary: '解说词2',
               terminals: [
                 {
-                  componentName: 'rb211_fan2',
+                  meshName: 'rb211_fan2',
                   style_: {
                     position: {
                       x: -58.1731,
@@ -227,27 +227,39 @@ export default {
      * 模型准备完成事件
      */
     readyComplete() {
-      const { diagrams, textBlockOptions } = this;
+      const { diagrams } = this;
 
       const suspend = [];
       diagrams.forEach(({ diagramName, steps }) => {
         steps.forEach(
-          ({ commentary, stepName, actionMethod, duration, terminals }) => {
-            textBlockOptions.text = `${diagramName}——${stepName}`; // 文本框显示
-
-            const interaction = { actionMethod: false, method: null };
+          ({
+            commentary,
+            stepName,
+            actionMethod,
+            duration,
+            terminals,
+            componentName,
+          }) => {
+            const interaction = {
+              actionMethod: false,
+              method: null,
+              componentName: null,
+            };
             // 如果需要交互,记录一下交互对象
             if (actionMethod) {
-              interaction.actionMethod = true;
-              interaction.method = actionMethod;
+              interaction.actionMethod = true; // 是否需要交互
+              interaction.method = actionMethod; // 交互操作的动作名
+              interaction.componentName = componentName; // 操作的对象
             }
 
             // 循环场景，生成动画
-            terminals.forEach(({ componentName, style_ }) => {
+            terminals.forEach(({ meshName, style_ }) => {
               this.packAnimationObject(
+                diagramName,
+                stepName,
                 interaction,
                 commentary,
-                componentName,
+                meshName,
                 duration,
                 style_,
                 '',
@@ -262,18 +274,22 @@ export default {
 
     /**
      * 打包动画对象
+     *  diagramName, 场景名
+     *  stepName, 步骤名
      *  interaction, 交互属性
      *  commentary, 解说词
-     *  componentName, 模型名
+     *  meshName, 模型名
      *  duration, 动画时间
      *  style_, 模型式样
      *  prefix = '', 动画属性名前缀
      *  suspend = [], 动画的中断时间
      */
     packAnimationObject(
+      diagramName,
+      stepName,
       interaction,
       commentary,
-      componentName,
+      meshName,
       duration,
       style_,
       prefix = '',
@@ -287,9 +303,11 @@ export default {
         if (key === 'material') {
           // 如果是材质属性
           this.packAnimationObject(
+            diagramName,
+            stepName,
             interaction,
             commentary,
-            componentName,
+            meshName,
             duration,
             propertyV,
             `${key}.`,
@@ -299,24 +317,28 @@ export default {
           const valueN = Object.keys(propertyV);
           valueN.forEach(keyV => {
             this.setAnimationObject(
+              diagramName,
+              stepName,
               suspend,
               duration,
               propertyV[keyV],
               commentary,
               interaction,
               `${prefix}${key}.${keyV}`,
-              componentName,
+              meshName,
             );
           });
         } else {
           this.setAnimationObject(
+            diagramName,
+            stepName,
             suspend,
             duration,
             propertyV,
             commentary,
             interaction,
             `${prefix}${key}`,
-            componentName,
+            meshName,
           );
         }
       });
@@ -325,13 +347,15 @@ export default {
      * 设置动画对象
      */
     setAnimationObject(
+      diagramName,
+      stepName,
       suspend,
       duration,
       propertyV,
       commentary,
       interaction,
       property,
-      componentName,
+      meshName,
     ) {
       const { textBlockOptions, animationObject } = this; // 文本框设置，动画对象
       const { keys, animationTime, actualFrom } = this.generateKeyFrames(
@@ -341,21 +365,23 @@ export default {
       );
 
       animationObject.push({
-        property,
-        duration: animationTime,
-        loop: false,
-        subname: componentName,
-        keys,
-        actualFrom,
-        animationEnd() {},
+        property, // 动画属性
+        duration: animationTime, // 动画时间
+        loop: false, // 是否循环动画
+        subname: meshName, // 目标子模型名字
+        keys, // 动画关键帧
+        actualFrom, // 动画事假启动的帧
+        animationEnd() {}, // 动画结束事件
         animationStart() {
+          // 动画开始事件
           textBlockOptions.text = commentary;
         },
         animationBeforeStart: () => {
+          // 动画开始之前事件
           if (interaction.actionMethod) {
-            textBlockOptions.text = '请按指令点击按钮';
+            textBlockOptions.text = `${diagramName}——${stepName}`;
 
-            this.turnOn('rb211_stru');
+            this.turnOn(interaction.componentName);
             interaction.actionMethod = false;
           }
         },
