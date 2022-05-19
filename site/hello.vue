@@ -19,7 +19,7 @@
       </FullscreenUI>
       <Asset
         src="http://dev.chimeraprime.com/jetengine/assets/jetEngine2.babylon"
-        :model-state="modelState"
+        :state-meshs="modelState"
         :register-action="true"
         :action-meshs="actionMeshs"
         :highlight-meshs="highlightMeshs"

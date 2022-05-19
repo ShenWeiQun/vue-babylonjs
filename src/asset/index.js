@@ -11,7 +11,7 @@ export default {
       type: String,
       default: null,
     },
-    modelState: { // 模型状态
+    stateMeshs: { // 模型状态
       type: Array,
       default() {
         return [];
@@ -42,7 +42,7 @@ export default {
     src() {
       this.loadAssetContainer();
     },
-    modelState: {
+    stateMeshs: {
       handler() {
         this.changeState();
       },
@@ -82,9 +82,9 @@ export default {
       this.setHighlightMeshs();
     },
     changeState() {
-      const { $scene, modelState } = this;
+      const { $scene, stateMeshs } = this;
 
-      modelState.forEach(({ name, position, rotation, scaling, material, visibility }) => {
+      stateMeshs.forEach(({ name, position, rotation, scaling, material, visibility }) => {
         const submodel = $scene.getMeshByName(name);
 
         // 设置材质属性
