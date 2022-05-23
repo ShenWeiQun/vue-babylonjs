@@ -90,7 +90,19 @@ export default {
         // 设置材质属性
         if (material) {
           const materialC = this.copyMaterial(name, submodel.material);
-          materialC.diffuseColor.set(...Object.values(material.diffuseColor));
+          // 漫反射
+          if (material.diffuseColor) {
+            if (materialC.diffuseColor) {
+              materialC.diffuseColor.set(...Object.values(material.diffuseColor));
+            }
+            if (materialC.albedoColor) {
+              materialC.albedoColor.set(...Object.values(material.diffuseColor));
+            }
+          }
+          (materialC.specularColor && material.specularColor) && materialC.specularColor.set(...Object.values(material.specularColor)); // 镜面反射
+          (materialC.emissiveColor && material.emissiveColor) && materialC.emissiveColor.set(...Object.values(material.emissiveColor)); // 自发光
+          (materialC.ambientColor && material.ambientColor) && materialC.ambientColor.set(...Object.values(material.ambientColor)); // 环境
+
           submodel.material = materialC;
         }
 
