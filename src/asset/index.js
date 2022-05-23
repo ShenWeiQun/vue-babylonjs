@@ -88,15 +88,19 @@ export default {
         const submodel = $scene.getMeshByName(name);
 
         // 设置材质属性
-        const materialC = this.copyMaterial(name, submodel.material);
-        materialC.diffuseColor.set(...Object.values(material.diffuseColor));
-        submodel.material = materialC;
+        if (material) {
+          const materialC = this.copyMaterial(name, submodel.material);
+          materialC.diffuseColor.set(...Object.values(material.diffuseColor));
+          submodel.material = materialC;
+        }
 
         // 设置模型属性
-        submodel.position.set(...Object.values(position));
-        submodel.rotation.set(...degreesToRadians(...Object.values(rotation)));
-        submodel.scaling.set(...Object.values(scaling));
-        submodel.visibility = visibility;
+        position && submodel.position.set(...Object.values(position));
+        rotation && submodel.rotation.set(...degreesToRadians(...Object.values(rotation)));
+        scaling && submodel.scaling.set(...Object.values(scaling));
+        if (typeof visibility === 'number') {
+          submodel.visibility = visibility;
+        }
       });
     },
     copyMaterial(name, material) {
