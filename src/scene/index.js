@@ -153,7 +153,8 @@ export default {
 
     requestFullScreen() {
       if (this.fullscreen) {
-        this.$refs.scene.requestFullScreen();
+        // this.$refs.scene.requestFullScreen();
+        this.engine.switchFullscreen(true);
       }
     },
 
