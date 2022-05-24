@@ -19,3 +19,4 @@ export { default as Uniform } from './shader/uniform';
 export * from './mesh';
 export * from './gui';
 export * from './util/constants';
+export * from './plugin';
