@@ -5,7 +5,7 @@
     "dist/*",
     "lib/*"
   ],
-  "main": "dist/umd.js",
+  "main": "dist/esm.js",
   "module": "dist/esm.js",
   "unpkg": "dist/umd.min.js",
   "jsdelivr": "dist/umd.min.js",

@@ -70,7 +70,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|gif)$/i,
+        test: /\.(png|jpg|gif|glb)$/i,
         type: 'asset/resource',
       },
       {

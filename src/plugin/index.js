@@ -1,8 +1,7 @@
 import GlowLayer from './glowLayer';
-
-const aa = '123';
+import Environment from './environment';
 
 export {
   GlowLayer,
-  aa,
+  Environment,
 };
