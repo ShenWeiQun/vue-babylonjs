@@ -5,8 +5,12 @@ export default {
   mixins: [Entity],
 
   props: {
-    diffuse: color3,
-    specular: color3,
+    diffuse: color3, // 漫反射：赋予物体基本的颜色。
+    specular: color3, // 高光：在物体上产生高光颜色。
+    intensity: { // 光照强度
+      type: Number,
+      default: 1,
+    },
   },
 
   computed: {
@@ -20,12 +24,17 @@ export default {
   },
 
   watch: {
+
     diffuseColor3() {
       this.setDiffuse();
     },
 
     specularColor3() {
       this.setSpecular();
+    },
+
+    intensity() {
+      this.setIntensity();
     },
   },
 
@@ -37,10 +46,15 @@ export default {
     setSpecular() {
       this.$entity.specular.copyFrom(this.specularColor3);
     },
+
+    setIntensity() {
+      this.$entity.intensity = this.intensity;
+    },
   },
 
   onEntity() {
     this.setDiffuse();
     this.setSpecular();
+    this.setIntensity();
   },
 };
