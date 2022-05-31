@@ -1,11 +1,7 @@
 <template>
-  <div>
+  <div class="container">
     <Scene :debug="debug">
-      <Camera
-        type="arcRotate"
-        :radius="350"
-      />
-      <FullscreenUI>
+      <!-- <FullscreenUI>
         <StackPanel :options="buttonPanel">
           <SimpleButton
             v-for="(option, index) in buttonOptions"
@@ -16,9 +12,12 @@
         <StackPanel :options="textBlockPanel">
           <TextBlock :options="textBlockOptions" />
         </StackPanel>
-      </FullscreenUI>
+      </FullscreenUI> -->
+      <HemisphericLight :direction="[0, 1, 0]"></HemisphericLight>
+      <Environment :options="envOptions" />
+      <Camera type="arcRotate" :radius="20" :target="[0, 3, 0]" :alpha="90" />
       <Asset
-        src="http://dev.chimeraprime.com/jetengine/assets/jetEngine2.babylon"
+        :src="assetSrc"
         :state-meshs="modelState"
         :register-action="true"
         :action-meshs="actionMeshs"
@@ -56,22 +55,29 @@ import {
   HORIZONTALALIGNMENT,
   VERTICALALIGNMENT,
   ANIMATIONSTATES,
-} from '../src/index';
+} from "../src/index";
+
+import assetSrc from "./assets/models/综合场景10.glb";
 
 export default {
-  name: 'Dashboard',
+  name: "Dashboard",
   computed: {
     buttonOptions() {
       // 按钮选项
       const { diagrams } = this;
-      return diagrams.map(item => ({
+      return diagrams.map((item) => ({
         text: item.diagramName,
-        paddingTop: '10px',
+        paddingTop: "10px",
       }));
     },
   },
   data() {
     return {
+      envOptions: {
+        skyboxTexture: "https://playground.babylonjs.com/textures/skybox",
+        skyboxSize: 200,
+      },
+      assetSrc,
       debug: false, // 是否开启debugger模式
       animationState: ANIMATIONSTATES.PLAY, // 动画状态
       actionMeshs: [], // 触发时间的模型
@@ -79,11 +85,11 @@ export default {
       modelState: [
         // 模型状态
         {
-          name: 'rb211_stru', // 模型名字
+          name: "上盖装配体", // 模型名字
           position: {
-            x: -58.1731,
-            y: 4.4119,
-            z: 2.0482,
+            x: 0,
+            y: 1,
+            z: 0,
           }, // 模型位置
           rotation: { x: 0, y: 0, z: 0 }, // 模型旋转
           scaling: { x: 1.0, y: 1.0, z: 1.0 }, // 模型缩放
@@ -101,51 +107,51 @@ export default {
       buttonPanel: {
         // 按钮面板选项
         horizontalAlignment: HORIZONTALALIGNMENT.HORIZONTAL_ALIGNMENT_LEFT,
-        background: 'green',
-        left: '30px',
-        width: '200px',
+        background: "green",
+        left: "30px",
+        width: "200px",
       },
       textBlockOptions: {
         // 文本框选项
-        text: '词排行榜，引领热...',
-        width: '400px',
-        height: '200px',
+        text: "词排行榜，引领热...",
+        width: "400px",
+        height: "200px",
       },
       textBlockPanel: {
         // 文本面板选项
         horizontalAlignment: HORIZONTALALIGNMENT.HORIZONTAL_ALIGNMENT_LEFT,
         verticalAlignment: VERTICALALIGNMENT.VERTICAL_ALIGNMENT_TOP,
-        top: '30px',
-        left: '30px',
-        width: '400px',
-        height: '200px',
-        background: 'green',
+        top: "30px",
+        left: "30px",
+        width: "400px",
+        height: "200px",
+        background: "green",
       },
       diagrams: [
         // 操作解析
         {
           diagramId: 4453491899935582,
-          diagramName: '通电自检',
+          diagramName: "通电自检",
           steps: [
             {
               stepId: 4453491899935583,
-              stepName: '打开电源',
-              actionMethod: 'turnOn',
+              stepName: "打开电源",
+              // actionMethod: 'turnOn',
               componentId: 4453491899935508,
-              componentName: 'rb211_stru',
+              componentName: "rb211_stru",
               state_: 1,
               duration: 2000,
-              commentary: '解说词1',
+              commentary: "解说词1",
               terminals: [
                 {
                   componentId: 4453491899935580,
-                  meshName: 'rb211_fan2',
+                  meshName: "上盖装配体",
                   state_: 1,
                   style_: {
-                    rotation: {
+                    position: {
                       x: 0,
-                      y: 0,
-                      z: 3.14,
+                      y: 6,
+                      z: 0,
                     },
                   },
                 },
@@ -153,20 +159,20 @@ export default {
             },
             {
               stepId: 4453491899935584,
-              stepName: '内存自检',
+              stepName: "内存自检",
               componentId: 4453491899935508,
-              componentName: '自检指示灯',
+              componentName: "自检指示灯",
               state_: 1,
               duration: 3000,
-              commentary: '解说词2',
+              commentary: "解说词2",
               terminals: [
                 {
-                  meshName: 'rb211_fan2',
+                  meshName: "上盖装配体",
                   style_: {
-                    position: {
-                      x: -58.1731,
-                      y: 4.4119,
-                      z: 2.0482,
+                    rotation: {
+                      x: 0,
+                      y: 0,
+                      z: 3.14,
                     },
                     visibility: 0.1,
                     material: {
@@ -182,10 +188,10 @@ export default {
             },
             {
               stepId: 4453491899935585,
-              stepName: '键盘自检',
+              stepName: "键盘自检",
               componentId: 4453491899935509,
-              componentName: '装订',
-              commentary: '解说词3',
+              componentName: "装订",
+              commentary: "解说词3",
               state_: 1,
               terminals: [],
             },
@@ -193,17 +199,17 @@ export default {
         },
         {
           diagramId: 4453491899935586,
-          diagramName: '键盘指令',
+          diagramName: "键盘指令",
           steps: [
             {
               stepId: 4453491899935583,
-              stepName: '指令输入',
-              beforeMethod: 'inputStateCheck',
-              actionMethod: 'keyboardInput',
-              afterMethod: 'Void',
+              stepName: "指令输入",
+              beforeMethod: "inputStateCheck",
+              actionMethod: "keyboardInput",
+              afterMethod: "Void",
               componentId: 4453491899935509,
-              componentName: '装订',
-              commentary: '解说词4',
+              componentName: "装订",
+              commentary: "解说词4",
               controller: [
                 {
                   signalSource: 1,
@@ -262,12 +268,12 @@ export default {
                 meshName,
                 duration,
                 style_,
-                '',
-                suspend,
+                "",
+                suspend
               );
               suspend.push(duration);
             });
-          },
+          }
         );
       });
     },
@@ -292,15 +298,15 @@ export default {
       meshName,
       duration,
       style_,
-      prefix = '',
-      suspend = [],
+      prefix = "",
+      suspend = []
     ) {
       const propertyN = Object.keys(style_); // 动画属性值
 
-      propertyN.forEach(key => {
+      propertyN.forEach((key) => {
         const propertyV = style_[key];
 
-        if (key === 'material') {
+        if (key === "material") {
           // 如果是材质属性
           this.packAnimationObject(
             diagramName,
@@ -311,11 +317,11 @@ export default {
             duration,
             propertyV,
             `${key}.`,
-            suspend,
+            suspend
           );
-        } else if (typeof propertyV === 'object') {
+        } else if (typeof propertyV === "object") {
           const valueN = Object.keys(propertyV);
-          valueN.forEach(keyV => {
+          valueN.forEach((keyV) => {
             this.setAnimationObject(
               diagramName,
               stepName,
@@ -325,7 +331,7 @@ export default {
               commentary,
               interaction,
               `${prefix}${key}.${keyV}`,
-              meshName,
+              meshName
             );
           });
         } else {
@@ -338,7 +344,7 @@ export default {
             commentary,
             interaction,
             `${prefix}${key}`,
-            meshName,
+            meshName
           );
         }
       });
@@ -355,13 +361,13 @@ export default {
       commentary,
       interaction,
       property,
-      meshName,
+      meshName
     ) {
       const { textBlockOptions, animationObject } = this; // 文本框设置，动画对象
       const { keys, animationTime, actualFrom } = this.generateKeyFrames(
         suspend,
         duration,
-        propertyV,
+        propertyV
       );
 
       animationObject.push({
@@ -396,7 +402,7 @@ export default {
     generateKeyFrames(suspend, duration, value) {
       const keys = [{ frame: 0, value: 0 }];
       let actualFrom = 0;
-      suspend.forEach(time => {
+      suspend.forEach((time) => {
         keys.push({ frame: (time / 1000) * 60, value: 0 });
         duration += time;
         actualFrom += time;
@@ -434,3 +440,12 @@ export default {
   },
 };
 </script>
+
+
+
+<style lang="sass" scoped>
+.container
+  position: absolute
+  top: 0px
+  bottom: 0px
+</style>

@@ -40,9 +40,12 @@ export const defer = () => {
   return promise;
 };
 // 角度制转弧度制
-export const degreesToRadians = (...args) => args.map(item => Angle.FromDegrees(item).radians());
+export const fromDegreesToR = item => Angle.FromDegrees(item).radians();
+export const degreesToRadians = (...args) => args.map(item => fromDegreesToR(item));
+
 // 弧度制转角度制
-export const radiansToDegrees = (...args) => args.map(item => Angle.FromRadians(item).degrees());
+export const fromRadiansToD = item => Angle.FromRadians(item).degrees();
+export const radiansToDegrees = (...args) => args.map(item => fromRadiansToD(item));
 
 // 获取子节点
 export const getChildNodes = ($scene, name) => {

@@ -11,6 +11,7 @@ import {
 } from 'babylonjs';
 import AbstractEntity from '../entity/abstract';
 import { vec3, toVec3 } from '../types/vector';
+import { fromDegreesToR } from '../util';
 
 const TYPES = {
   universal,
@@ -39,19 +40,19 @@ export default {
       default: () => new Vector3(0, 0, -10),
     },
 
-    target: vec3,
+    target: vec3, // 相机的目标点
 
-    alpha: {
+    alpha: { // 相机沿纵(Y)轴的旋转
       type: Number,
-      default: -Math.PI / 2,
+      default: -90,
     },
 
-    beta: {
+    beta: { // 摄像机沿横（X）轴的旋转
       type: Number,
-      default: Math.PI / 2,
+      default: 90,
     },
 
-    radius: {
+    radius: { // 摄像机到目标的距离
       type: Number,
       default: 10,
     },
@@ -69,7 +70,7 @@ export default {
     args() {
       let out = [this.name];
       if (this.type === 'arcRotate' || this.type === 'arcFollow') {
-        out = out.concat([this.alpha, this.beta, this.radius, this.targetVector3]);
+        out = out.concat([fromDegreesToR(this.alpha), fromDegreesToR(this.beta), this.radius, this.targetVector3]);
       } else {
         out = out.concat([this.positionVector3]);
       }
@@ -116,11 +117,11 @@ export default {
     },
 
     alpha() {
-      this.$entity.alpha = this.alpha;
+      this.$entity.alpha = fromDegreesToR(this.alpha);
     },
 
     beta() {
-      this.$entity.beta = this.beta;
+      this.$entity.beta = fromDegreesToR(this.beta);
     },
 
     radius() {
