@@ -1,6 +1,6 @@
 // import { Engine, Scene, Color3, Vector3 } from 'babylonjs';
 import { Engine, Scene, Color3, Vector3, HighlightLayer } from 'babylonjs';
-import { createBus, defer } from '../util';
+import { createBus, defer, getChildNodes } from '../util';
 import { vecValidator as validator, toVec3 } from '../types/vector';
 import { color3, toColor3 } from '../types/color';
 import registerObservers from '../observable';
@@ -217,11 +217,11 @@ export default {
       const { scene } = this;
       const hl = new HighlightLayer('_hl1', scene);
       this.sceneBus.$on('addMeshToHighlightLayer', ({ name, color }) => {
-        const mesh = scene.getMeshByName(name);
+        const mesh = getChildNodes(scene, name);
         hl.addMesh(mesh, new Color3(...color));
       });
       this.sceneBus.$on('removeMeshForHighlightLayer', ({ name }) => {
-        const mesh = scene.getMeshByName(name);
+        const mesh = getChildNodes(scene, name);
         hl.removeMesh(mesh);
       });
     },

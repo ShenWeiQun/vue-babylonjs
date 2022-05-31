@@ -5,6 +5,7 @@ import { Vector3,
   ExecuteCodeAction } from 'babylonjs';
 import AbstractEntity from './abstract';
 import { vec3, toVec3 } from '../types/vector';
+import { getChildNodes } from '../util';
 
 const { validator } = vec3;
 
@@ -74,7 +75,7 @@ export default {
     _$_registerActionManager(name = '') {
       if (!this.registerAction) return;
       const { $scene, $entity } = this;
-      let submodel = $scene.getMeshByName(name);
+      let submodel = getChildNodes($scene, name);
 
       if (!submodel) {
         submodel = $entity;
@@ -93,7 +94,7 @@ export default {
     // 销毁实体的事件管理器
     _$_disposeActionManager(name = '') {
       const { $scene, $entity } = this;
-      let submodel = $scene.getMeshByName(name);
+      let submodel = getChildNodes($scene, name);
 
       if (!submodel) {
         submodel = $entity;
@@ -121,7 +122,7 @@ export default {
     if (!this.$entity) {
       // HACK: TransformNode does not implement IPhysicsEnabledObject, so using invisible box instead
       let box = MeshBuilder.CreateBox(this.name, {}, this.$scene);
-      box.material = new StandardMaterial();
+      // box.material = new StandardMaterial();
       box.isVisible = false;
       this.$entity = box;
     }

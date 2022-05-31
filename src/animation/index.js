@@ -16,7 +16,7 @@ import {
   BezierCurveEase as bezierCurve,
 } from 'babylonjs';
 import AbstractEntity from '../entity/abstract';
-import { isFloat } from '../util';
+import { isFloat, getChildNodes } from '../util';
 import { ANIMATIONSTATES } from '../util/constants';
 
 const EASINGS = {
@@ -336,7 +336,7 @@ export default {
       let target = parent;
       let submodel = null;
       if (subname) {
-        submodel = scene.getMeshByName(subname);
+        submodel = getChildNodes(scene, subname);
       }
       // 如果指定了子模型，则目标设置为子模型
       if (submodel) {
@@ -346,9 +346,13 @@ export default {
       if (property.startsWith('material')) {
         target = target.material;
       }
-      if (!target.animations) {
-        target.animations = [];
+      if (target) {
+        if (!target.animations) {
+          target.animations = [];
+        }
+        target.rotationQuaternion = null; // 将模型的旋转四元数设置为 null，否则导入的模型将产生旋转错误
       }
+
       return target;
     },
     // 控制动画状态
@@ -482,6 +486,7 @@ export default {
 
   onParent({ parent, entity, scene }) {
     const target = this.setTarget(parent, scene);
+    if (!target) return; // 如果找不到动画目标则不进行后面的动作
     this.target = target;
     this.setEasingFunction();
     this.setFrames();

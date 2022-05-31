@@ -1,7 +1,7 @@
 import 'babylonjs-loaders';
 import { SceneLoader } from 'babylonjs';
 import Entity from '../entity';
-import { degreesToRadians } from '../util';
+import { degreesToRadians, getChildNodes } from '../util';
 
 export default {
   mixins: [Entity],
@@ -85,10 +85,10 @@ export default {
       const { $scene, stateMeshs } = this;
 
       stateMeshs.forEach(({ name, position, rotation, scaling, material, visibility }) => {
-        const submodel = $scene.getMeshByName(name);
+        const submodel = getChildNodes($scene, name);
 
         // 设置材质属性
-        if (material) {
+        if (material && submodel.material) {
           const materialC = this.copyMaterial(name, submodel.material);
           // 漫反射
           if (material.diffuseColor) {

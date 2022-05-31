@@ -43,3 +43,12 @@ export const defer = () => {
 export const degreesToRadians = (...args) => args.map(item => Angle.FromDegrees(item).radians());
 // 弧度制转角度制
 export const radiansToDegrees = (...args) => args.map(item => Angle.FromRadians(item).degrees());
+
+// 获取子节点
+export const getChildNodes = ($scene, name) => {
+  let submodel = $scene.getMeshByName(name); // 是否为Mesh节点
+  if (!submodel) {
+    submodel = $scene.getTransformNodeByName(name); // 是否为TransformNode节点
+  }
+  return submodel;
+};
