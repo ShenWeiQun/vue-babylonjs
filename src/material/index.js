@@ -10,52 +10,52 @@ export default {
   mixins: [AbstractEntity],
 
   props: {
-    diffuse: {
+    diffuse: { // 漫反射：设置予在灯光下材质的基本颜色
       validator,
       default: () => new Color3(1, 1, 1),
     },
 
-    specular: {
+    specular: { // 高光：设置在灯光下材质的高光
       validator,
       default: () => new Color3(1, 1, 1),
     },
 
-    emissive: {
+    emissive: { // 自发光：设置材质的自发光颜色
       validator,
       default: () => new Color3(0, 0, 0),
     },
 
-    ambient: {
+    ambient: { // 环境光：设置由环境背景光照亮材质的颜色
       validator,
       default: () => new Color3(0, 0, 0),
     },
 
-    reflection: {
+    reflection: { // 反射光：对于PBRMaterial，设置材质反射颜色
       validator,
       default: () => new Color3(1, 1, 1),
     },
 
-    alpha: {
+    alpha: { // 透明度：设置材质的透明度
       type: Number,
       default: 1,
     },
 
-    metallic: {
+    metallic: { // 金属：对于PBRMaterial，设置材质的金属标量值
       type: Number,
       default: null,
     },
 
-    roughness: {
+    roughness: { // 粗糙值：对于PBRMaterial，设置材质的粗糙度标量值
       type: Number,
       default: null,
     },
 
-    glossiness: {
+    glossiness: { // 光泽度：对于PBRMaterial，设置材质的反射光泽度
       type: Number,
       default: null,
     },
 
-    indexOfRefraction: {
+    indexOfRefraction: { // 折射率：对于PBRMaterial，设置材质的透明折射率
       type: Number,
       default: 0.66,
     },
