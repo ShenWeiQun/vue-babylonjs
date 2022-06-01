@@ -1,6 +1,6 @@
 import { SpotLight } from 'babylonjs';
 import DirectionalLight from './directional';
-import { isFloat } from '../util';
+import { isFloat, fromDegreesToR } from '../util';
 
 export default {
   mixins: [DirectionalLight],
@@ -8,7 +8,7 @@ export default {
   props: {
     angle: {
       validator: isFloat,
-      default: Math.PI / 2,
+      default: 90,
     },
 
     exponent: {
@@ -19,7 +19,7 @@ export default {
 
   watch: {
     angle() {
-      this.$entity.angle = this.angle;
+      this.$entity.angle = fromDegreesToR(this.angle);
     },
 
     exponent() {
@@ -28,6 +28,6 @@ export default {
   },
 
   onScene({ name, position, scene }) {
-    return new SpotLight(name, position, this.directionVector3, this.angle, this.exponent, scene);
+    return new SpotLight(name, position, this.directionVector3, fromDegreesToR(this.angle), this.exponent, scene);
   },
 };
