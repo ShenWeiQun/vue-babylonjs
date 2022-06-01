@@ -149,9 +149,52 @@ export default {
                   state_: 1,
                   style_: {
                     position: {
-                      x: 0,
+
                       y: 6,
-                      z: 0,
+                   
+                    },
+                  },
+                },
+              ],
+            },
+            {
+              stepId: 4453491899935584,
+              stepName: "内存自检",
+              componentId: 4453491899935508,
+              componentName: "自检指示灯",
+              state_: 1,
+              duration: 3000,
+              commentary: "解说词2",
+              terminals: [
+                {
+                  componentId: 4453491899935580,
+                  meshName: "上盖装配体",
+                  state_: 1,
+                  style_: {
+                    position: {
+                   
+                      x: -6,
+                    },
+                  },
+                },
+              ],
+            },
+            {
+              stepId: 4453491899935584,
+              stepName: "内存自检",
+              componentId: 4453491899935508,
+              componentName: "自检指示灯",
+              state_: 1,
+              duration: 3000,
+              commentary: "解说词2",
+              terminals: [
+                {
+                  componentId: 4453491899935580,
+                  meshName: "上盖装配体",
+                  state_: 1,
+                  style_: {
+                    position: {
+                      y: 0,
                     },
                   },
                 },
@@ -403,7 +446,7 @@ export default {
       const keys = [{ frame: 0, value: 0 }];
       let actualFrom = 0;
       suspend.forEach((time) => {
-        keys.push({ frame: (time / 1000) * 60, value: 0 });
+        keys.push({ frame: (duration / 1000) * 60, value: 0 });
         duration += time;
         actualFrom += time;
       });
@@ -445,7 +488,6 @@ export default {
 
 <style lang="sass" scoped>
 .container
-  position: absolute
-  top: 0px
-  bottom: 0px
+  position: fixed
+  height: 100%
 </style>

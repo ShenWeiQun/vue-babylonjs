@@ -327,6 +327,22 @@ export default {
           }
         });
 
+        const { animations } = target;
+        animations.forEach(item => {
+          // 如果要设置的属性前面已经设置了，那么沿用前面的帧，否则会被后来关键帧的替换
+          if (localProperty === item.targetProperty) {
+            const keys = item.getKeys();
+            const lengthK = keys.length;
+            // 替换已存在的帧
+            frames.splice(0, lengthK, ...keys);
+            frames.forEach((element, index) => {
+              // 设置当前帧的过度帧为上一个的最后一帧
+              if (index > lengthK - 1 && index < frames.length - 1) {
+                element.value = keys[lengthK - 1].value;
+              }
+            });
+          }
+        });
         $entity.setKeys(frames);
       }
     },
