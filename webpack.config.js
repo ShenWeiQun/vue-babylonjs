@@ -35,7 +35,7 @@ module.exports = {
     main: './site/index.js',
   },
   output: {
-    path: path.resolve(__dirname, './docs'),
+    path: path.resolve(__dirname, './documents'),
     // publicPath: '/',
     filename: '[id].js',
   },
